@@ -13,9 +13,80 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        
+        
+        //购酷
+        self.v_gouku_Back = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 173)];
+        [self addSubview:self.v_gouku_Back];
+        [self.v_gouku_Back setBackgroundColor:[UIColor colorWithHexString:@"#5B99E2"]];
+        
+        self.lab_gouku_title = [[UILabel alloc]initWithFrame:CGRectMake(15, 11, 120, 25)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_title];
+        [self.lab_gouku_title setText:@"堂食  购酷支付"];
+        [self.lab_gouku_title setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_title setFont:[UIFont boldSystemFontOfSize:18]];
+        
+        self.lab_gouku_zhouqi = [[UILabel alloc]initWithFrame:CGRectMake(self.lab_gouku_title.right + 20, 14, 100, 20)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_zhouqi];
+        [self.lab_gouku_zhouqi setText:@"结算周期1天"];
+        [self.lab_gouku_zhouqi setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_zhouqi setFont:[UIFont systemFontOfSize:14]];
+        
+        self.img_gouku_line1 = [[UIImageView alloc]initWithFrame:CGRectMake(15, 41, SCREEN_WIDTH - 15, 1)];
+        [self.v_gouku_Back addSubview:self.img_gouku_line1];
+        [self.img_gouku_line1 setBackgroundColor:[UIColor colorWithHexString:@"#FFFFFF"]];
+        
+        self.img_gouku_line2 = [[UIImageView alloc]initWithFrame:CGRectMake(15, 107, SCREEN_WIDTH - 15, 1)];
+        [self.v_gouku_Back addSubview:self.img_gouku_line2];
+        [self.img_gouku_line2 setBackgroundColor:[UIColor colorWithHexString:@"#FFFFFF"]];
+        
+        self.lab_gouku_balance = [[UILabel alloc]initWithFrame:CGRectMake(15, 53, 90, 20)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_balance];
+        [self.lab_gouku_balance setText:@"可提现余额"];
+        [self.lab_gouku_balance setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_balance setFont:[UIFont systemFontOfSize:14]];
+        
+        self.lab_gouku_balanceT = [[UILabel alloc]initWithFrame:CGRectMake(15, 78, 150, 22)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_balanceT];
+        [self.lab_gouku_balanceT setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_balanceT setFont:[UIFont boldSystemFontOfSize:20]];
+        
+        self.lab_gouku_jiesuan = [[UILabel alloc]initWithFrame:CGRectMake(15, 119, 90, 20)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_jiesuan];
+        [self.lab_gouku_jiesuan setText:@"待对账金额"];
+        [self.lab_gouku_jiesuan setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_jiesuan setFont:[UIFont systemFontOfSize:14]];
+        
+        self.lab_gouku_jiesuanT = [[UILabel alloc]initWithFrame:CGRectMake(15, 141, 150, 22)];
+        [self.v_gouku_Back addSubview:self.lab_gouku_jiesuanT];
+        [self.lab_gouku_jiesuanT setTextColor:[UIColor whiteColor]];
+        [self.lab_gouku_jiesuanT setFont:[UIFont boldSystemFontOfSize:20]];
+        
+        self.btn_gouku_tixian = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20 - 65, 60, 65, 30)];
+        [self.v_gouku_Back addSubview:self.btn_gouku_tixian];
+        [self.btn_gouku_tixian setTitle:@"提现" forState:UIControlStateNormal];
+        [self.btn_gouku_tixian setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+        [self.btn_gouku_tixian setBackgroundColor:[UIColor clearColor]];
+        self.btn_gouku_tixian.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.btn_gouku_tixian.layer.cornerRadius = 3.0f;
+        self.btn_gouku_tixian.layer.masksToBounds = YES;
+        self.btn_gouku_tixian.layer.borderWidth = 0.8f;
+        self.btn_gouku_tixian.layer.borderColor = [[UIColor whiteColor] CGColor];
+        
+        
+        self.btn_gouku_mingxi = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20 - 65, 126, 65, 30)];
+        [self.v_gouku_Back addSubview:self.btn_gouku_mingxi];
+        [self.btn_gouku_mingxi setTitle:@"余额明细" forState:UIControlStateNormal];
+        [self.btn_gouku_mingxi setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+        [self.btn_gouku_mingxi setBackgroundColor:[UIColor clearColor]];
+        self.btn_gouku_mingxi.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.btn_gouku_mingxi.layer.cornerRadius = 3.0f;
+        self.btn_gouku_mingxi.layer.masksToBounds = YES;
+        self.btn_gouku_mingxi.layer.borderWidth = 0.8f;
+        self.btn_gouku_mingxi.layer.borderColor = [[UIColor whiteColor] CGColor];
 
         //饿了么
-        self.v_eleme_Back = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 173)];
+        self.v_eleme_Back = [[UIView alloc]initWithFrame:CGRectMake(0, self.v_gouku_Back.bottom + 10, SCREEN_WIDTH, 173)];
         [self addSubview:self.v_eleme_Back];
         [self.v_eleme_Back setBackgroundColor:[UIColor colorWithHexString:@"#5B99E2"]];
         

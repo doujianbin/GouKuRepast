@@ -65,7 +65,7 @@
     [todayTotal setTextColor: [UIColor whiteColor]];
     [todayTotal setTextAlignment:NSTextAlignmentCenter];
     [todayTotal setFont:[UIFont systemFontOfSize:14]];
-    [todayTotal setText:@"今日总收入"];
+    [todayTotal setText:@"今日堂食收入"];
     
     self.lab_todayOrderCount = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 36, SCREEN_WIDTH / 2, 27)];
     [self.v_1 addSubview:self.lab_todayOrderCount];
@@ -81,79 +81,79 @@
     [todayOrderCount setFont:[UIFont systemFontOfSize:14]];
     [todayOrderCount setText:@"今日总订单"];
     
-//    self.v_2 = [[UIView alloc]initWithFrame:CGRectMake(0, self.v_1.bottom, SCREEN_WIDTH, 119)];
-//    [self.view addSubview:self.v_2];
-//    [self.v_2 setBackgroundColor:[UIColor whiteColor]];
-//
-//    UIImageView *img_heng = [[UIImageView alloc]initWithFrame:CGRectMake(0, 119 / 2, SCREEN_WIDTH, 0.5)];
-//    [self.v_2 addSubview:img_heng];
-//    [img_heng setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
-//
-//    UIImageView *img_shu1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 10, 0.5, 41)];
-//    [self.v_2 addSubview:img_shu1];
-//    [img_shu1 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
-//
-//    UIImageView *img_shu2 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 , img_heng.bottom + 10, 0.5, 41)];
-//    [self.v_2 addSubview:img_shu2];
-//    [img_shu2 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
-//
-//    self.lab_goukuShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, 13, SCREEN_WIDTH / 2, 17)];
-//    [self.v_2 addSubview:self.lab_goukuShouKuan];
-//    [self.lab_goukuShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [self.lab_goukuShouKuan setTextAlignment:NSTextAlignmentCenter];
-//    [self.lab_goukuShouKuan setFont:[UIFont systemFontOfSize:16]];
-////    [self.lab_goukuShouKuan setText:@"¥1000.00"];
-//
-//    UILabel *goukuShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, self.lab_goukuShouKuan.bottom + 3, SCREEN_WIDTH / 2, 14)];
-//    [self.v_2 addSubview:goukuShouKuan];
-//    [goukuShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [goukuShouKuan setTextAlignment:NSTextAlignmentCenter];
-//    [goukuShouKuan setFont:[UIFont systemFontOfSize:10]];
-//    [goukuShouKuan setText:@"购酷支付收款"];
-//
-//    self.lab_waimaiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 13, SCREEN_WIDTH / 2, 17)];
-//    [self.v_2 addSubview:self.lab_waimaiOrder];
-//    [self.lab_waimaiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [self.lab_waimaiOrder setTextAlignment:NSTextAlignmentCenter];
-//    [self.lab_waimaiOrder setFont:[UIFont systemFontOfSize:16]];
-////    [self.lab_waimaiOrder setText:@"20"];
-//
-//    UILabel *waimaiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, self.lab_waimaiOrder.bottom + 3, SCREEN_WIDTH / 2, 14)];
-//    [self.v_2 addSubview:waimaiOrder];
-//    [waimaiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [waimaiOrder setTextAlignment:NSTextAlignmentCenter];
-//    [waimaiOrder setFont:[UIFont systemFontOfSize:10]];
-//    [waimaiOrder setText:@"外卖订单"];
-//
-//    self.lab_crashShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, img_heng.bottom + 13, SCREEN_WIDTH / 2, 17)];
-//    [self.v_2 addSubview:self.lab_crashShouKuan];
-//    [self.lab_crashShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [self.lab_crashShouKuan setTextAlignment:NSTextAlignmentCenter];
-//    [self.lab_crashShouKuan setFont:[UIFont systemFontOfSize:16]];
-////    [self.lab_crashShouKuan setText:@"¥1000.00"];
-//
-//    UILabel *crashShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, self.lab_crashShouKuan.bottom + 3, SCREEN_WIDTH / 2, 14)];
-//    [self.v_2 addSubview:crashShouKuan];
-//    [crashShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [crashShouKuan setTextAlignment:NSTextAlignmentCenter];
-//    [crashShouKuan setFont:[UIFont systemFontOfSize:10]];
-//    [crashShouKuan setText:@"现金收款"];
-//
-//    self.lab_tangshiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng.bottom + 13, SCREEN_WIDTH / 2, 17)];
-//    [self.v_2 addSubview:self.lab_tangshiOrder];
-//    [self.lab_tangshiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [self.lab_tangshiOrder setTextAlignment:NSTextAlignmentCenter];
-//    [self.lab_tangshiOrder setFont:[UIFont systemFontOfSize:16]];
-////    [self.lab_tangshiOrder setText:@"36"];
-//
-//    UILabel *tangshiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, self.lab_tangshiOrder.bottom + 3,SCREEN_WIDTH / 2, 14)];
-//    [self.v_2 addSubview:tangshiOrder];
-//    [tangshiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
-//    [tangshiOrder setTextAlignment:NSTextAlignmentCenter];
-//    [tangshiOrder setFont:[UIFont systemFontOfSize:10]];
-//    [tangshiOrder setText:@"堂食订单"];
+    self.v_2 = [[UIView alloc]initWithFrame:CGRectMake(0, self.v_1.bottom, SCREEN_WIDTH, 119)];
+    [self.view addSubview:self.v_2];
+    [self.v_2 setBackgroundColor:[UIColor whiteColor]];
+
+    UIImageView *img_heng = [[UIImageView alloc]initWithFrame:CGRectMake(0, 119 / 2, SCREEN_WIDTH, 0.5)];
+    [self.v_2 addSubview:img_heng];
+    [img_heng setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+
+    UIImageView *img_shu1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 10, 0.5, 41)];
+    [self.v_2 addSubview:img_shu1];
+    [img_shu1 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+
+    UIImageView *img_shu2 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 , img_heng.bottom + 10, 0.5, 41)];
+    [self.v_2 addSubview:img_shu2];
+    [img_shu2 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+
+    self.lab_goukuShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, 13, SCREEN_WIDTH / 2, 17)];
+    [self.v_2 addSubview:self.lab_goukuShouKuan];
+    [self.lab_goukuShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [self.lab_goukuShouKuan setTextAlignment:NSTextAlignmentCenter];
+    [self.lab_goukuShouKuan setFont:[UIFont systemFontOfSize:16]];
+//    [self.lab_goukuShouKuan setText:@"¥1000.00"];
+
+    UILabel *goukuShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, self.lab_goukuShouKuan.bottom + 3, SCREEN_WIDTH / 2, 14)];
+    [self.v_2 addSubview:goukuShouKuan];
+    [goukuShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [goukuShouKuan setTextAlignment:NSTextAlignmentCenter];
+    [goukuShouKuan setFont:[UIFont systemFontOfSize:10]];
+    [goukuShouKuan setText:@"购酷支付收款"];
+
+    self.lab_waimaiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 13, SCREEN_WIDTH / 2, 17)];
+    [self.v_2 addSubview:self.lab_waimaiOrder];
+    [self.lab_waimaiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [self.lab_waimaiOrder setTextAlignment:NSTextAlignmentCenter];
+    [self.lab_waimaiOrder setFont:[UIFont systemFontOfSize:16]];
+//    [self.lab_waimaiOrder setText:@"20"];
+
+    UILabel *waimaiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, self.lab_waimaiOrder.bottom + 3, SCREEN_WIDTH / 2, 14)];
+    [self.v_2 addSubview:waimaiOrder];
+    [waimaiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [waimaiOrder setTextAlignment:NSTextAlignmentCenter];
+    [waimaiOrder setFont:[UIFont systemFontOfSize:10]];
+    [waimaiOrder setText:@"外卖订单"];
+
+    self.lab_crashShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, img_heng.bottom + 13, SCREEN_WIDTH / 2, 17)];
+    [self.v_2 addSubview:self.lab_crashShouKuan];
+    [self.lab_crashShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [self.lab_crashShouKuan setTextAlignment:NSTextAlignmentCenter];
+    [self.lab_crashShouKuan setFont:[UIFont systemFontOfSize:16]];
+//    [self.lab_crashShouKuan setText:@"¥1000.00"];
+
+    UILabel *crashShouKuan = [[UILabel alloc]initWithFrame:CGRectMake(0, self.lab_crashShouKuan.bottom + 3, SCREEN_WIDTH / 2, 14)];
+    [self.v_2 addSubview:crashShouKuan];
+    [crashShouKuan setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [crashShouKuan setTextAlignment:NSTextAlignmentCenter];
+    [crashShouKuan setFont:[UIFont systemFontOfSize:10]];
+    [crashShouKuan setText:@"现金收款"];
+
+    self.lab_tangshiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng.bottom + 13, SCREEN_WIDTH / 2, 17)];
+    [self.v_2 addSubview:self.lab_tangshiOrder];
+    [self.lab_tangshiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [self.lab_tangshiOrder setTextAlignment:NSTextAlignmentCenter];
+    [self.lab_tangshiOrder setFont:[UIFont systemFontOfSize:16]];
+//    [self.lab_tangshiOrder setText:@"36"];
+
+    UILabel *tangshiOrder = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, self.lab_tangshiOrder.bottom + 3,SCREEN_WIDTH / 2, 14)];
+    [self.v_2 addSubview:tangshiOrder];
+    [tangshiOrder setTextColor: [UIColor colorWithHexString:@"#4A4A4A"]];
+    [tangshiOrder setTextAlignment:NSTextAlignmentCenter];
+    [tangshiOrder setFont:[UIFont systemFontOfSize:10]];
+    [tangshiOrder setText:@"堂食订单"];
     
-    self.v_3 = [[UIView alloc]initWithFrame:CGRectMake(0, self.v_1.bottom + 10, SCREEN_WIDTH, 99)];
+    self.v_3 = [[UIView alloc]initWithFrame:CGRectMake(0, self.v_2.bottom + 10, SCREEN_WIDTH, 99)];
     [self.view addSubview:self.v_3];
     [self.v_3 setBackgroundColor:[UIColor whiteColor]];
     
@@ -194,9 +194,9 @@
     [self.v_3 addSubview:img_shu];
     [img_shu setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
     
-    UIImageView *img_shu2 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng_v3.bottom, 0.5, 67)];
-    [self.v_3 addSubview:img_shu2];
-    [img_shu2 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+    UIImageView *img_shu3 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng_v3.bottom, 0.5, 67)];
+    [self.v_3 addSubview:img_shu3];
+    [img_shu3 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
     
 }
 
@@ -209,8 +209,10 @@
         NSLog(@"dic == %@",dic);
         [self.lab_todayTotal setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"sales"] floatValue]]];
         [self.lab_todayOrderCount setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"orders"]]];
-//        [self.lab_crashShouKuan setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"cashSales"] floatValue]]];
-//        [self.lab_goukuShouKuan setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"goukuSales"] floatValue]]];
+        [self.lab_crashShouKuan setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"cashSales"] floatValue]]];
+        [self.lab_goukuShouKuan setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"goukuSales"] floatValue]]];
+        [self.lab_waimaiOrder setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"onlineOrderCount"]]];
+        [self.lab_tangshiOrder setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"storeOrderCount"]]];
         
     } failed:^(NSInteger statusCode, id json) {
         

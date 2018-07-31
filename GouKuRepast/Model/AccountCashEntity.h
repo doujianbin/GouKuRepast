@@ -11,9 +11,9 @@
 
 @interface AccountCashEntity : BaseEntity
 
-@property (nonatomic ,assign)double            money;
-@property (nonatomic ,assign)double            moneyNeedCheck;
-@property (nonatomic ,assign)int               toCashNum;
+@property (nonatomic ,assign)double            money;                 //购酷账户余额
+@property (nonatomic ,assign)double            moneyNeedCheck;        //购酷待结算金额
+@property (nonatomic ,assign)int               toCashNum;             //购酷提现次数
 @property (nonatomic ,assign)double            lowMoney;
 @property (nonatomic ,strong)BankCardEntity    *bankCard;
 @property (nonatomic ,assign)double            elemeMoney;            //饿了么账户余额

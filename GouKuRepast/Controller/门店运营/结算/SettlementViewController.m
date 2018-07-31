@@ -36,6 +36,8 @@
 - (void)onCreate{
     self.v_settlementBack = [[SettlementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:self.v_settlementBack];
+    [self.v_settlementBack.btn_gouku_tixian addTarget:self action:@selector(btn_tixianAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.v_settlementBack.btn_gouku_mingxi addTarget:self action:@selector(yuemingxiAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.v_settlementBack.btn_eleme_tixian addTarget:self action:@selector(btn_tixianAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.v_settlementBack.btn_eleme_mingxi addTarget:self action:@selector(yuemingxiAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.v_settlementBack.btn_meituan_tixian addTarget:self action:@selector(btn_tixianAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -47,6 +49,9 @@
         
     } success:^(id obj) {
         self.accountCashEntity = (AccountCashEntity *)obj;
+        
+        [self.v_settlementBack.lab_gouku_balanceT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.money]];
+        [self.v_settlementBack.lab_gouku_jiesuanT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.moneyNeedCheck]];
         [self.v_settlementBack.lab_meituan_balanceT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.mtMoney]];
         [self.v_settlementBack.lab_meituan_jiesuanT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.mtMoneyNeedCheck]];
         [self.v_settlementBack.lab_eleme_balanceT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.elemeMoney]];
@@ -64,6 +69,11 @@
         vc.cardNum = [NSString stringWithFormat:@"%@",self.accountCashEntity.bankCard.cardNum];
         vc.cardName = self.accountCashEntity.bankCard.bankName;
         vc.lowPrice = self.accountCashEntity.lowMoney;
+        if (btn == self.v_settlementBack.btn_gouku_tixian) {
+            vc.tixianCount = self.accountCashEntity.toCashNum;
+            vc.ketixianPrice = self.accountCashEntity.money;
+            vc.tixianType = TiXianGouku;
+        }
         if (btn == self.v_settlementBack.btn_eleme_tixian) {
             vc.tixianCount = self.accountCashEntity.elemeToCashNum;
             vc.ketixianPrice = self.accountCashEntity.elemeMoney;
@@ -84,6 +94,9 @@
 
 - (void)yuemingxiAction:(UIButton *)btn{
     YueDetailViewController *vc = [[YueDetailViewController alloc]init];
+    if (btn == self.v_settlementBack.btn_gouku_mingxi) {
+        vc.yueDetailFormType = YueDetailFormGouKu;
+    }
     if (btn == self.v_settlementBack.btn_eleme_mingxi) {
         vc.yueDetailFormType = YueDetailFormEleMe;
     }
