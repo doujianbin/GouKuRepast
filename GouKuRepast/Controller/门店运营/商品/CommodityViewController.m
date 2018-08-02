@@ -82,7 +82,6 @@
     [btn_right setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#ffffff"]} forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = btn_right;
     
-    ///*****************************            批量管理注掉的
      self.btn_navright_search = [UIButton buttonWithType:(UIButtonTypeCustom)];
      [self.btn_navright_search setImage:[UIImage imageNamed:@"search_white"] forState:UIControlStateNormal];
      [self.btn_navright_search addTarget:self action:@selector(searchBarAction) forControlEvents:UIControlEventTouchUpInside];
@@ -97,16 +96,12 @@
      [self setNavUI];
 }
 
-
-
 - (void)setNavUI{
     if (self.editStatus == NO) {
-        self.navigationItem.titleView = self.btn_top;
         UIBarButtonItem *pulish = [[UIBarButtonItem alloc] initWithCustomView:self.btn_navright_search];
         UIBarButtonItem *save = [[UIBarButtonItem alloc] initWithCustomView:self.btn_navright_more];
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:save, pulish,nil]];
     }else{
-        self.navigationItem.titleView = self.lb_selectedNum;
         UIBarButtonItem *confirm = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(confirmAction)];
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:confirm,nil]];
     }
@@ -277,8 +272,10 @@
     [self.navigationController pushViewController:vc animated:YES];
     vc.addRepastCommodityComplete = ^(RepastEntity *entity) {
         if ([entityDemo.name isEqualToString:entity.categoryName]) {
-            [self.arr_commodity insertObject:entity atIndex:self.arr_commodity.count];
-            [self.tb_right reloadData];
+            if ([self.btnIndex intValue] != 3) {
+                [self.arr_commodity insertObject:entity atIndex:self.arr_commodity.count];
+                [self.tb_right reloadData];
+            }
         }
     };
 }
@@ -703,8 +700,6 @@
     [alert addAction:forgetPassword];
     [alert addAction:again];
     [self presentViewController:alert animated:YES completion:nil];
-    
-
 }
 
 - (void)shangjiaAction{

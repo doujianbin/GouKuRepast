@@ -1092,6 +1092,7 @@
         }
         entity.attributes = arr_attributes;
         entity.materials = arr_materials;
+        self.repastEntityWuma.status = 1;
         NSMutableDictionary *dic = [self getObjectData:entity];
         if (arr_attributes.count == 0) {
             [dic removeObjectForKey:@"attributes"];
@@ -1139,6 +1140,7 @@
                 self.repastEntityYouma.onlineStoreUsing = NO;
             }
         }
+        self.repastEntityYouma.status = 1;
         NSMutableDictionary *dic = [self getObjectData:self.repastEntityYouma];
         if (self.repastEntityYouma.name == nil) {
             [MBProgressHUD showErrorMessage:@"请填写商品名称"];
@@ -1290,6 +1292,7 @@
         }
         entity.attributes = arr_attributes;
         entity.materials = arr_materials;
+        self.repastEntityWuma.status = 1;
         NSMutableDictionary *dic = [self getObjectData:entity];
         if (arr_attributes.count == 0) {
             [dic removeObjectForKey:@"attributes"];
@@ -1328,6 +1331,7 @@
                 self.repastEntityYouma.onlineStoreUsing = NO;
             }
         }
+        self.repastEntityYouma.status = 1;
         NSMutableDictionary *dic = [self getObjectData:self.repastEntityYouma];
         if (self.repastEntityYouma.name == nil) {
             [MBProgressHUD showErrorMessage:@"请填写商品名称"];
@@ -1398,7 +1402,7 @@
                 entity.weightNnit = @"克(g)";
             }
         }
-        [self.tb_youma reloadData];
+    [self.tb_youma reloadData];
     };
 }
 

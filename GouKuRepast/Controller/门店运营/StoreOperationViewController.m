@@ -206,7 +206,7 @@
         
     } success:^(id obj) {
         NSDictionary *dic = (NSDictionary *)obj;
-        NSLog(@"dic == %@",dic);
+//        NSLog(@"dic == %@",dic);
         [self.lab_todayTotal setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"sales"] floatValue]]];
         [self.lab_todayOrderCount setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"orders"]]];
         [self.lab_crashShouKuan setText:[NSString stringWithFormat:@"¥%.2f",[[dic objectForKey:@"cashSales"] floatValue]]];
@@ -215,7 +215,7 @@
         [self.lab_tangshiOrder setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"storeOrderCount"]]];
         
     } failed:^(NSInteger statusCode, id json) {
-        
+        [MBProgressHUD showErrorMessage:[NSString stringWithFormat:@"%ld:%@",statusCode,json]];
     }];
 }
 
