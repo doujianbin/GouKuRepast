@@ -12,12 +12,18 @@
 @interface ShopPriceDetailView : UIView
 
 @property (nonatomic ,strong)UIView            *v_back;
+@property (nonatomic ,strong)UILabel           *lab_title;
+
 @property (nonatomic ,strong)UILabel           *lab_totalPrice;
 @property (nonatomic ,strong)UILabel           *lab_youhui;
+@property (nonatomic ,strong)UILabel           *lab_fuwu;
+@property (nonatomic ,strong)UILabel           *lab_peisong;
 @property (nonatomic ,strong)UILabel           *lab_shouru;
 
 @property (nonatomic ,strong)UILabel           *lab_totalPriceDetail;
 @property (nonatomic ,strong)UILabel           *lab_youhuiDetail;
+@property (nonatomic ,strong)UILabel           *lab_fuwuDetail;
+@property (nonatomic ,strong)UILabel           *lab_peisongDetail;
 @property (nonatomic ,strong)UILabel           *lab_shouruDetail;
 @property (nonatomic ,strong)UIImageView       *img_line;
 @property (nonatomic ,strong)UIButton          *btn_sure;

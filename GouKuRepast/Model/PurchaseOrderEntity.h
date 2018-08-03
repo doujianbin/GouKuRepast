@@ -19,11 +19,15 @@
 @property (nonatomic ,strong)NSNumber         *orderId;           //订单ID
 @property (nonatomic ,strong)NSString         *remark;            //备注
 @property (nonatomic ,strong)NSNumber         *number;            //订单当日序号
-@property (nonatomic ,assign)double            payFreight;        //订单运费
 @property (nonatomic ,assign)double            payTotal;          //订单总价
 @property (nonatomic ,assign)double            payWareTotal;      //商品总价
-@property (nonatomic ,assign)double            payReduce;          //优惠金额
+@property (nonatomic ,assign)double            payReduce;         //优惠金额
 @property (nonatomic ,assign)double            payActual;         //订单修改后的价格(实付总价)
+@property (nonatomic ,strong)NSNumber         *orderShippingType; //配送类型 ==2的时候显示配送费
+@property (nonatomic ,assign)double            projectedIncome;   //预计收入
+@property (nonatomic ,assign)double            payService;        //服务费
+@property (nonatomic ,assign)double            payFreight;        //配送费
+
 @property (nonatomic ,strong)NSNumber         *count;             //订单商品数量
 @property (nonatomic ,assign)double            createTime;        //下单时间
 @property (nonatomic ,assign)double            payTime;           //付款时间

@@ -108,8 +108,8 @@
 }
 
 - (void)contentViewWithPurchaseOrderEntity:(PurchaseOrderEntity *)purchaseOrderEntity{
-    NSString *str_countAndPrice = [NSString stringWithFormat:@"共%d件，合计¥%.2f",[purchaseOrderEntity.count intValue],purchaseOrderEntity.payActual];
-    NSString *str_count = [NSString stringWithFormat:@"共%d件，合计",[purchaseOrderEntity.count intValue]];
+    NSString *str_countAndPrice = [NSString stringWithFormat:@"共%d件，本单预计收入¥%.2f",[purchaseOrderEntity.count intValue],purchaseOrderEntity.projectedIncome];
+    NSString *str_count = [NSString stringWithFormat:@"共%d件，本单预计收入",[purchaseOrderEntity.count intValue]];
     NSMutableAttributedString *str_amount = [[NSMutableAttributedString alloc]initWithString:str_countAndPrice];
     [str_amount addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, str_count.length)];
     [self.lab_countAndPrice setAttributedText:str_amount];
