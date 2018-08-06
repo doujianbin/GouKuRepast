@@ -34,6 +34,7 @@
 @property (nonatomic ,strong)NSNumber                      *saleAmountMonth;   //月销量
 @property (nonatomic ,strong)NSString                      *unit;      //列表显示的默认单位名称
 @property (nonatomic ,assign)double                        price;      //列表显示的默认单位价格
+@property (nonatomic ,assign)double                        pricePreferential;   //优惠后的字段
 @property (nonatomic ,assign)NSInteger                     count;
 @property (nonatomic ,strong)NSString                      *remark;
 @property (nonatomic ,strong)NSNumber                      *skuUnitId;

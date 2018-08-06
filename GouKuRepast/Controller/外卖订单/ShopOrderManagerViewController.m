@@ -467,7 +467,7 @@
             [printer appendText:str8 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_commodity.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_commodity objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         if (arr_baozhuang.count > 0) {
@@ -475,7 +475,7 @@
             [printer appendText:str9 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_baozhuang.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_baozhuang objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         if (arr_zengpin.count > 0) {
@@ -483,7 +483,7 @@
             [printer appendText:str10 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_zengpin.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_zengpin objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         [printer appendSeperatorLine];
@@ -586,7 +586,7 @@
             [printer appendText:str8 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_commodity.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_commodity objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         if (arr_baozhuang.count > 0) {
@@ -594,7 +594,7 @@
             [printer appendText:str9 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_baozhuang.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_baozhuang objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         if (arr_zengpin.count > 0) {
@@ -602,7 +602,7 @@
             [printer appendText:str10 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
             for (int i = 0; i < arr_zengpin.count; i++) {
                 SupplierCommodityEndity *commidityEntity = [arr_zengpin objectAtIndex:i];
-                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
+                [printer appendLeftText:commidityEntity.name middleText:[NSString stringWithFormat:@"x%ld",(long)commidityEntity.count] rightText:[NSString stringWithFormat:@"%.2f",commidityEntity.count * commidityEntity.price] isTitle:YES];
             }
         }
         [printer appendSeperatorLine];
