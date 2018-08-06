@@ -998,8 +998,7 @@
 			children = (
 				743BB5AE20F5D1CC00DD5B99 /* LYLOptionPicker */,
 				743BB5B720F5D1CC00DD5B99 /* SJFullscreenPopGesture */,
-				743BB5C020F5D1CD00DD5B99 /* JWBluetoothPrinte */,
-				743BB5C220F5D1CD00DD5B99 /* New Group */,
+				743BB5C220F5D1CD00DD5B99 /* JWBluetoothPrinte */,
 				743BB5D320F5D1CD00DD5B99 /* 输入密码alert */,
 				743BB5DC20F5D1CD00DD5B99 /* OttoKeyboardView */,
 				743BB5EA20F5D1CD00DD5B99 /* AddressPickerView */,
@@ -1052,37 +1051,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		743BB5C020F5D1CD00DD5B99 /* JWBluetoothPrinte */ = {
-			isa = PBXGroup;
-			children = (
-				743BB5C120F5D1CD00DD5B99 /* JWProgressHUD */,
-			);
-			path = JWBluetoothPrinte;
-			sourceTree = "<group>";
-		};
-		743BB5C120F5D1CD00DD5B99 /* JWProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = JWProgressHUD;
-			sourceTree = "<group>";
-		};
-		743BB5C220F5D1CD00DD5B99 /* New Group */ = {
+		743BB5C220F5D1CD00DD5B99 /* JWBluetoothPrinte */ = {
 			isa = PBXGroup;
 			children = (
 				743BB5C320F5D1CD00DD5B99 /* JWBluetoothBlocks.h */,
+				743BB5CC20F5D1CD00DD5B99 /* ProgressShow.h */,
 				743BB5C420F5D1CD00DD5B99 /* ProgressShow.m */,
+				743BB5CB20F5D1CD00DD5B99 /* JWBluetoothManage.h */,
 				743BB5C520F5D1CD00DD5B99 /* JWBluetoothManage.m */,
+				743BB5C920F5D1CD00DD5B99 /* UIWebView+UIImage.h */,
 				743BB5C620F5D1CD00DD5B99 /* UIWebView+UIImage.m */,
 				743BB5C720F5D1CD00DD5B99 /* UIImage+Bitmap.h */,
-				743BB5C820F5D1CD00DD5B99 /* JWPrinter.m */,
-				743BB5C920F5D1CD00DD5B99 /* UIWebView+UIImage.h */,
 				743BB5CA20F5D1CD00DD5B99 /* UIImage+Bitmap.m */,
-				743BB5CB20F5D1CD00DD5B99 /* JWBluetoothManage.h */,
-				743BB5CC20F5D1CD00DD5B99 /* ProgressShow.h */,
 				743BB5CD20F5D1CD00DD5B99 /* JWPrinter.h */,
+				743BB5C820F5D1CD00DD5B99 /* JWPrinter.m */,
 			);
-			path = "New Group";
+			path = JWBluetoothPrinte;
 			sourceTree = "<group>";
 		};
 		743BB5D320F5D1CD00DD5B99 /* 输入密码alert */ = {
@@ -1235,9 +1219,9 @@
 			isa = PBXGroup;
 			children = (
 				743BB63020F5D1CD00DD5B99 /* RTHttpClient.h */,
-				743BB63120F5D1CD00DD5B99 /* RTJSONResponseSerializerWithData.m */,
-				743BB63220F5D1CD00DD5B99 /* RTJSONResponseSerializerWithData.h */,
 				743BB63320F5D1CD00DD5B99 /* RTHttpClient.m */,
+				743BB63220F5D1CD00DD5B99 /* RTJSONResponseSerializerWithData.h */,
+				743BB63120F5D1CD00DD5B99 /* RTJSONResponseSerializerWithData.m */,
 			);
 			path = RTHttpClient;
 			sourceTree = "<group>";

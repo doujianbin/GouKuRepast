@@ -441,7 +441,9 @@
 
 - (void)btn_tellAction:(UIButton *)btn_sender{
     PurchaseOrderEntity *entity = [self.arr_leftOrder objectAtIndex:btn_sender.tag];
-    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",entity.phone];
+    NSString * str_tell =[entity.phone stringByReplacingOccurrencesOfString:@"_"withString:@","];
+    
+    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",str_tell];
     UIWebView * callWebview = [[UIWebView alloc] init];
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [self.view addSubview:callWebview];

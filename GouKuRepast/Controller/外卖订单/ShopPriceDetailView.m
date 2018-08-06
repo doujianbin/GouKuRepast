@@ -184,7 +184,7 @@
 }
 
 - (void)contentViewWithPurchaseOrderEntity:(PurchaseOrderEntity *)purchaseOrderEntity{
-    self.lab_totalPriceDetail.text = [NSString stringWithFormat:@"¥%.2f",purchaseOrderEntity.payWareTotal];
+    self.lab_totalPriceDetail.text = [NSString stringWithFormat:@"¥%.2f",purchaseOrderEntity.payTotal];
     self.lab_youhuiDetail.text = [NSString stringWithFormat:@"-¥%.2f",purchaseOrderEntity.payReduce];
     self.lab_fuwuDetail.text = [NSString stringWithFormat:@"-¥%.2f",purchaseOrderEntity.payService];
     self.lab_shouruDetail.text = [NSString stringWithFormat:@"-¥%.2f",purchaseOrderEntity.payActual];

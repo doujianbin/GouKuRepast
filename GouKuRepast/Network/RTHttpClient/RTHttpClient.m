@@ -69,8 +69,8 @@
     [self.manager.requestSerializer setValue:idfa forHTTPHeaderField:@"Gouku-Device-Id"];
     NSString *version = [[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     
-    //商家端
-    [self.manager.requestSerializer setValue:@"12" forHTTPHeaderField:@"Gouku-App-Origin"
+    //餐饮端
+    [self.manager.requestSerializer setValue:@"16" forHTTPHeaderField:@"Gouku-App-Origin"
      ];
     
     [self.manager.requestSerializer setValue:version forHTTPHeaderField:@"x-docchat-app-version"];
