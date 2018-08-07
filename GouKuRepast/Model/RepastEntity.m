@@ -36,6 +36,7 @@
     entity.name = self.name;
     entity.desc = self.desc;
     entity.brandId = self.brandId;
+    entity.brandName = self.brandName;
     entity.pictures = self.pictures;
     entity.categoryId = self.categoryId;
     entity.categoryName = self.categoryName;

@@ -429,7 +429,7 @@
         }else{
             self.repastEntityYouma.brandName = brandName;
             self.repastEntityYouma.brandId = brandId;
-            [self.tb_wuma reloadData];
+            [self.tb_youma reloadData];
         }
     };
 }

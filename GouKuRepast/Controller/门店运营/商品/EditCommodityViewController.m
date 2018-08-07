@@ -694,7 +694,6 @@
         [self.navigationController pushViewController:vc animated:YES];
         vc.selectSpecificationComplete = ^(NSArray *arr_Specification, NSMutableArray *arr_deleteIds) {
             self.repastEntity.standards = arr_Specification;
-            self.repastEntity.deleteIds = arr_deleteIds;
             [self.arr_deleteSkuIds addObjectsFromArray:arr_deleteIds];
             [self.tb_edit reloadData];
         };
