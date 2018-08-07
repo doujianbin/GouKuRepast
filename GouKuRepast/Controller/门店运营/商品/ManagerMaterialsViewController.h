@@ -8,11 +8,13 @@
 
 #import "BaseViewController.h"
 
-typedef void(^SelectMaterialsComplete)(NSArray *arr_Materials);
+typedef void(^SelectMaterialsComplete)(NSArray *arr_Materials,NSMutableArray *arr_deleteIds);
 
 @interface ManagerMaterialsViewController : BaseViewController
 
 @property (nonatomic ,strong)NSArray      *arr_materials;
+@property (nonatomic ,strong)NSMutableArray      *arr_deleteIds;
+
 
 @property (nonatomic ,copy)SelectMaterialsComplete   selectMaterialsComplete;
 @end

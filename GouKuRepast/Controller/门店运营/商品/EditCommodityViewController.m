@@ -36,11 +36,21 @@
 @property (nonatomic ,strong)OSSClient                  *client;
 @property (nonatomic ,strong)UIView                     *tb_footer;
 @property (nonatomic ,strong)UILabel                    *lb_barcode;
+@property (nonatomic ,strong)NSMutableArray             *arr_deleteIds;
+@property (nonatomic ,strong)NSMutableArray             *arr_deleteSkuIds;
 
 @end
 
 @implementation EditCommodityViewController
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.arr_deleteIds = [[NSMutableArray alloc]init];
+        self.arr_deleteSkuIds = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"编辑商品";
@@ -682,8 +692,10 @@
         ManagerSpecificationViewController *vc = [[ManagerSpecificationViewController alloc]init];
         vc.arr_specification = self.repastEntity.standards;
         [self.navigationController pushViewController:vc animated:YES];
-        vc.selectSpecificationComplete = ^(NSArray *arr_Specification) {
+        vc.selectSpecificationComplete = ^(NSArray *arr_Specification, NSMutableArray *arr_deleteIds) {
             self.repastEntity.standards = arr_Specification;
+            self.repastEntity.deleteIds = arr_deleteIds;
+            [self.arr_deleteSkuIds addObjectsFromArray:arr_deleteIds];
             [self.tb_edit reloadData];
         };
     }else if (section == 2) {
@@ -691,16 +703,18 @@
         ManagerMaterialsViewController *vc = [[ManagerMaterialsViewController alloc]init];
         vc.arr_materials = self.repastEntity.materials;
         [self.navigationController pushViewController:vc animated:YES];
-        vc.selectMaterialsComplete = ^(NSArray *arr_Materials) {
+        vc.selectMaterialsComplete = ^(NSArray *arr_Materials,NSMutableArray *arr_deleteIds) {
             self.repastEntity.materials = arr_Materials;
+            [self.arr_deleteIds addObjectsFromArray:arr_deleteIds];
             [self.tb_edit reloadData];
         };
     }else if (section == 3){
         ManagerPropertyViewController *vc = [[ManagerPropertyViewController alloc]init];
         vc.arr_property = self.repastEntity.attributes;
         [self.navigationController pushViewController:vc animated:YES];
-        vc.selectPropertyComplete = ^(NSArray *arr_attritus) {
+        vc.selectPropertyComplete = ^(NSArray *arr_attritus,NSMutableArray *arr_deleteIds) {
             self.repastEntity.attributes = arr_attritus;
+            [self.arr_deleteIds addObjectsFromArray:arr_deleteIds];
             [self.tb_edit reloadData];
         };
     }
@@ -830,6 +844,12 @@
 }
 
 - (void)postCommodityInformationWithDic:(NSDictionary *)dic{
+    if (self.arr_deleteSkuIds.count > 0) {
+        [dic setValue:self.arr_deleteSkuIds forKey:@"deleteSkuIds"];
+    }
+    if (self.arr_deleteIds.count > 0) {
+        [dic setValue:self.arr_deleteIds forKey:@"deleteIds"];
+    }
     [RepastCommodityHandler addRepastCommodityWithDic:dic prepare:^{
         [MBProgressHUD showActivityMessageInView:@"上传中"];
     } success:^(id obj) {

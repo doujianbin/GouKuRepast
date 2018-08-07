@@ -29,6 +29,7 @@
 @property (nonatomic ,strong)NSArray          *standards;
 @property (nonatomic ,strong)NSArray          *materials;
 @property (nonatomic ,strong)NSArray          *attributes;
+@property (nonatomic ,strong)NSArray          *deleteIds;   //删除的属性和原料和规格的ID数组
 
 + (NSArray *)parseRepastEntityListWithJson:(id)json;
 + (RepastEntity *)parseRepastEntityWithJson:(id)json;

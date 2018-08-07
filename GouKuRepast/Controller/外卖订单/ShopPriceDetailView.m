@@ -41,7 +41,7 @@
         [self.lab_totalPrice setFont:[UIFont systemFontOfSize:17]];
         [self.lab_totalPrice mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(14);
-            make.top.equalTo(self.lab_title.mas_bottom).offset(50);
+            make.top.equalTo(self.lab_title.mas_bottom).offset(15);
             make.height.mas_equalTo(24);
         }];
         

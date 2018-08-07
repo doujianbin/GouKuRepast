@@ -432,7 +432,17 @@
     
     for (int i = 0; i < [[LoginStorage getPrinterNum] intValue]; i++) {
         JWPrinter *printer = [[JWPrinter alloc] init];
-        NSString *str1 = [NSString stringWithFormat:@"********饿了么#%@********",entity.number];
+        NSString *strType;
+        if ([entity.orderType intValue] == 1) {
+            strType = @"购酷";
+        }
+        if ([entity.orderType intValue] == 2) {
+            strType = @"饿了么";
+        }
+        if ([entity.orderType intValue] == 3) {
+            strType = @"美团";
+        }
+        NSString *str1 = [NSString stringWithFormat:@"********%@#%@********",strType,entity.number];
         [printer appendText:str1 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleBig];
         NSString *str2 = [LoginStorage GetShopName];
         [printer appendText:str2 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleMiddle];
@@ -551,7 +561,17 @@
     
     for (int i = 0; i < [[LoginStorage getPrinterNum] intValue]; i++) {
         JWPrinter *printer = [[JWPrinter alloc] init];
-        NSString *str1 = [NSString stringWithFormat:@"********饿了么#%@********",entity.number];
+        NSString *strType;
+        if ([entity.orderType intValue] == 1) {
+            strType = @"购酷";
+        }
+        if ([entity.orderType intValue] == 2) {
+            strType = @"饿了么";
+        }
+        if ([entity.orderType intValue] == 3) {
+            strType = @"美团";
+        }
+        NSString *str1 = [NSString stringWithFormat:@"********%@#%@********",strType,entity.number];
         [printer appendText:str1 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleBig];
         NSString *str2 = [LoginStorage GetShopName];
         [printer appendText:str2 alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleMiddle];

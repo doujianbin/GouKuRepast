@@ -10,6 +10,7 @@
 
 @interface MaterialsEntity : BaseEntity
 
+@property (nonatomic ,strong)NSNumber         *attrId;
 @property (nonatomic ,strong)NSString         *materialId;
 @property (nonatomic ,strong)NSString         *name;
 @property (nonatomic ,strong)NSString         *content;

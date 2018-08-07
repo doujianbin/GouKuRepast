@@ -26,6 +26,7 @@
     entity.materialId = self.materialId;
     entity.name = self.name;
     entity.content = self.content;
+    entity.attrId = self.attrId;
     return entity;
     
 }

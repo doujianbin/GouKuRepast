@@ -52,6 +52,7 @@
 - (void)onCreate{
     
     [self.arr_data addObjectsFromArray:[self.arr_specification copy]];
+    self.arr_deleteIds = [[NSMutableArray alloc]init];
     self.tb_specifcation = [[UITableView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, SCREEN_WIDTH, SCREEN_HEIGHT - SafeAreaTopHeight - 44) style:UITableViewStyleGrouped];
     [self.view addSubview:self.tb_specifcation];
     self.tb_specifcation.delegate = self;
@@ -291,12 +292,16 @@
 }
 
 - (void)v_footerAction:(UIButton *)sender{
+    StandardsEntity *standards = [self.arr_data objectAtIndex:sender.tag];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除后无法恢复，确定要删除吗？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *forgetPassword = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     UIAlertAction *again = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.view endEditing:YES];
+        if ([standards.skuId intValue] != 0) {
+            [self.arr_deleteIds addObject:standards.skuId];
+        }
         [self.arr_data removeObjectAtIndex:sender.tag];
         [self.tb_specifcation reloadData];
         [self setAddBtnUI];
@@ -365,9 +370,8 @@
         }
     }
     
-    
     if (self.selectSpecificationComplete) {
-        self.selectSpecificationComplete(self.arr_data);
+        self.selectSpecificationComplete(self.arr_data,self.arr_deleteIds);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

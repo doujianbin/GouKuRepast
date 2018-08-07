@@ -26,6 +26,7 @@
     entity.attribute = self.attribute;
     entity.name = self.name;
     entity.contents = self.contents;
+    entity.attrId = self.attrId;
     return entity;
     
 }

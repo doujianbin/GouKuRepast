@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
-typedef void(^SelectPropertyComplete)(NSArray *arr_attritus);
+typedef void(^SelectPropertyComplete)(NSArray *arr_attritus,NSMutableArray *arr_deleteIds);
 @interface ManagerPropertyViewController : BaseViewController
 
 @property (nonatomic ,strong)NSArray      *arr_property;
+@property (nonatomic ,strong)NSMutableArray      *arr_deleteIds;
+
 
 @property (nonatomic ,copy)SelectPropertyComplete   selectPropertyComplete;
 

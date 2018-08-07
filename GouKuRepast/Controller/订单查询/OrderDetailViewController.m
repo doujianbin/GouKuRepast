@@ -169,11 +169,11 @@
     NSDictionary *dic = [self.arr_data objectAtIndex:indexPath.section];
     ItemsEntity *entity = [[dic objectForKey:@"data"] objectAtIndex:indexPath.row];
     [cell contentWithItemEntity:entity];
-    if (entity.pricePreferential > 0 && indexPath.section == self.arr_data.count - 1){
-        [cell.lab_price_yuanjia setHidden:NO];
-    }else{
-        [cell.lab_price_yuanjia setHidden:YES];
-    }
+//    if (entity.pricePreferential > 0 && indexPath.section == self.arr_data.count - 1){
+//        [cell.lab_price_yuanjia setHidden:NO];
+//    }else{
+//        [cell.lab_price_yuanjia setHidden:YES];
+//    }
     return cell;
 }
 

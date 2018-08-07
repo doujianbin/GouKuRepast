@@ -966,7 +966,7 @@
             ManagerSpecificationViewController *vc = [[ManagerSpecificationViewController alloc]init];
             vc.arr_specification = self.repastEntityWuma.standards;
             [self.navigationController pushViewController:vc animated:YES];
-            vc.selectSpecificationComplete = ^(NSArray *arr_Specification) {
+            vc.selectSpecificationComplete = ^(NSArray *arr_Specification,NSMutableArray *arr_deleteIds) {
                 self.repastEntityWuma.standards = arr_Specification;
                 [self.tb_wuma reloadData];
             };
@@ -975,7 +975,7 @@
             ManagerMaterialsViewController *vc = [[ManagerMaterialsViewController alloc]init];
             vc.arr_materials = self.repastEntityWuma.materials;
             [self.navigationController pushViewController:vc animated:YES];
-            vc.selectMaterialsComplete = ^(NSArray *arr_Materials) {
+            vc.selectMaterialsComplete = ^(NSArray *arr_Materials,NSMutableArray *arr_deleteIds) {
                 self.repastEntityWuma.materials = arr_Materials;
                 [self.tb_wuma reloadData];
             };
@@ -983,7 +983,7 @@
             ManagerPropertyViewController *vc = [[ManagerPropertyViewController alloc]init];
             vc.arr_property = self.repastEntityWuma.attributes;
             [self.navigationController pushViewController:vc animated:YES];
-            vc.selectPropertyComplete = ^(NSArray *arr_attritus) {
+            vc.selectPropertyComplete = ^(NSArray *arr_attritus,NSMutableArray *arr_deleteIds) {
                 self.repastEntityWuma.attributes = arr_attritus;
                 [self.tb_wuma reloadData];
             };
@@ -994,7 +994,7 @@
             ManagerSpecificationViewController *vc = [[ManagerSpecificationViewController alloc]init];
             vc.arr_specification = self.repastEntityYouma.standards;
             [self.navigationController pushViewController:vc animated:YES];
-            vc.selectSpecificationComplete = ^(NSArray *arr_Specification) {
+            vc.selectSpecificationComplete = ^(NSArray *arr_Specification,NSMutableArray *arr_deleteIds) {
                 self.repastEntityYouma.standards = arr_Specification;
                 [self.tb_youma reloadData];
             };
@@ -1032,29 +1032,23 @@
                 [MBProgressHUD showErrorMessage:@"请填写规格名称"];
                 return;
             }
-            if (cell.switch_Inventory.on == NO) {
+            if (standards.stockType == NO) {
                 if (standards.stock == NULL) {
                     [MBProgressHUD showErrorMessage:@"请填写库存"];
                     return;
                 }
             }
-            if (cell.switch_inStore.on == YES) {
+            if (standards.storeUsing == YES) {
                 if ([cell.tf_inStorePrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写堂食价格"];
                     return;
                 }
             }
-            if (cell.switch_waimai.on == YES) {
+            if (standards.onlineStoreUsing == YES) {
                 if ([cell.tf_waimaiPrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写外卖价格"];
                     return;
                 }
-            }
-            if (cell.switch_inStore.on == YES) {
-                self.repastEntityWuma.storeUsing = YES;
-            }
-            if (cell.switch_waimai.on == YES) {
-                self.repastEntityWuma.onlineStoreUsing = YES;
             }
         }
         for (int i = 0;i < self.repastEntityWuma.materials.count;i++) {
@@ -1083,11 +1077,11 @@
             }
         }
         for (StandardsEntity *entity_standards in self.repastEntityWuma.standards) {
-            if (entity_standards.storeUsing == NO) {
-                self.repastEntityWuma.storeUsing = NO;
+            if (entity_standards.storeUsing == YES) {
+                self.repastEntityWuma.storeUsing = YES;
             }
-            if (entity_standards.onlineStoreUsing == NO) {
-                self.repastEntityWuma.onlineStoreUsing = NO;
+            if (entity_standards.onlineStoreUsing == YES) {
+                self.repastEntityWuma.onlineStoreUsing = YES;
             }
         }
         entity.attributes = arr_attributes;
@@ -1133,11 +1127,11 @@
     }else{
         self.repastEntityYouma.barcodeType = YES;
         for (StandardsEntity *entity_standards in self.repastEntityYouma.standards) {
-            if (entity_standards.storeUsing == NO) {
-                self.repastEntityYouma.storeUsing = NO;
+            if (entity_standards.storeUsing == YES) {
+                self.repastEntityYouma.storeUsing = YES;
             }
-            if (entity_standards.onlineStoreUsing == NO) {
-                self.repastEntityYouma.onlineStoreUsing = NO;
+            if (entity_standards.onlineStoreUsing == YES) {
+                self.repastEntityYouma.onlineStoreUsing = YES;
             }
         }
         self.repastEntityYouma.status = 1;
@@ -1156,29 +1150,23 @@
                 [MBProgressHUD showErrorMessage:@"请填写规格名称"];
                 return;
             }
-            if (cell.switch_Inventory.on == NO) {
+            if (standards.stockType == NO) {
                 if (standards.stock == NULL) {
                     [MBProgressHUD showErrorMessage:@"请填写库存"];
                     return;
                 }
             }
-            if (cell.switch_inStore.on == YES) {
+            if (standards.storeUsing == YES) {
                 if ([cell.tf_inStorePrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写堂食价格"];
                     return;
                 }
             }
-            if (cell.switch_waimai.on == YES) {
+            if (standards.onlineStoreUsing == YES) {
                 if ([cell.tf_waimaiPrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写外卖价格"];
                     return;
                 }
-            }
-            if (cell.switch_inStore.on == YES) {
-                self.repastEntityYouma.storeUsing = YES;
-            }
-            if (cell.switch_waimai.on == YES) {
-                self.repastEntityYouma.onlineStoreUsing = YES;
             }
         }
         [dic removeObjectForKey:@"attributes"];
@@ -1238,19 +1226,19 @@
                 [MBProgressHUD showErrorMessage:@"请填写规格名称"];
                 return;
             }
-            if (cell.switch_Inventory.on == NO) {
+            if (standards.stockType == NO) {
                 if (standards.stock == NULL) {
                     [MBProgressHUD showErrorMessage:@"请填写库存"];
                     return;
                 }
             }
-            if (cell.switch_inStore.on == YES) {
+            if (standards.storeUsing == YES) {
                 if ([cell.tf_inStorePrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写堂食价格"];
                     return;
                 }
             }
-            if (cell.switch_waimai.on == YES) {
+            if (standards.onlineStoreUsing == YES) {
                 if ([cell.tf_waimaiPrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写外卖价格"];
                     return;
@@ -1283,11 +1271,11 @@
             }
         }
         for (StandardsEntity *entity_standards in self.repastEntityWuma.standards) {
-            if (entity_standards.storeUsing == NO) {
-                self.repastEntityWuma.storeUsing = NO;
+            if (entity_standards.storeUsing == YES) {
+                self.repastEntityWuma.storeUsing = YES;
             }
-            if (entity_standards.onlineStoreUsing == NO) {
-                self.repastEntityWuma.onlineStoreUsing = NO;
+            if (entity_standards.onlineStoreUsing == YES) {
+                self.repastEntityWuma.onlineStoreUsing = YES;
             }
         }
         entity.attributes = arr_attributes;
@@ -1324,11 +1312,11 @@
     }else{
         self.repastEntityYouma.barcodeType = YES;
         for (StandardsEntity *entity_standards in self.repastEntityYouma.standards) {
-            if (entity_standards.storeUsing == NO) {
-                self.repastEntityYouma.storeUsing = NO;
+            if (entity_standards.storeUsing == YES) {
+                self.repastEntityYouma.storeUsing = YES;
             }
-            if (entity_standards.onlineStoreUsing == NO) {
-                self.repastEntityYouma.onlineStoreUsing = NO;
+            if (entity_standards.onlineStoreUsing == YES) {
+                self.repastEntityYouma.onlineStoreUsing = YES;
             }
         }
         self.repastEntityYouma.status = 1;
@@ -1347,19 +1335,19 @@
                 [MBProgressHUD showErrorMessage:@"请填写规格名称"];
                 return;
             }
-            if (cell.switch_Inventory.on == NO) {
+            if (standards.stockType == NO) {
                 if (standards.stock == NULL) {
                     [MBProgressHUD showErrorMessage:@"请填写库存"];
                     return;
                 }
             }
-            if (cell.switch_inStore.on == YES) {
+            if (standards.storeUsing == YES) {
                 if ([cell.tf_inStorePrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写堂食价格"];
                     return;
                 }
             }
-            if (cell.switch_waimai.on == YES) {
+            if (standards.onlineStoreUsing == YES) {
                 if ([cell.tf_waimaiPrice.text isEqualToString:@""]) {
                     [MBProgressHUD showErrorMessage:@"请填写外卖价格"];
                     return;

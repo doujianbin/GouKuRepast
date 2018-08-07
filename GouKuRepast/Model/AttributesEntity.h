@@ -10,6 +10,7 @@
 
 @interface AttributesEntity : BaseEntity
 
+@property (nonatomic ,strong)NSNumber         *attrId;
 @property (nonatomic ,strong)NSString         *name;
 @property (nonatomic ,strong)NSString         *attribute;
 @property (nonatomic ,strong)NSArray          *contents;

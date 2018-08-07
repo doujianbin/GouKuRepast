@@ -45,7 +45,7 @@
     entity.materials = self.materials;
     entity.attributes = self.attributes;
     entity.barcode = self.barcode;
-    
+    entity.spu = self.spu;
     return entity;
     
 }

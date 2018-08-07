@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         self.arr_data = [[NSMutableArray alloc]init];
+        self.arr_deleteIds = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -145,13 +146,16 @@
 }
 
 - (void)v_footerAction:(UIButton *)sender{
-
+    AttributesEntity *entity = [self.arr_data objectAtIndex:sender.tag];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除后无法恢复，确定要删除吗？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *forgetPassword = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     UIAlertAction *again = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.view endEditing:YES];
+        if (entity.attrId != 0) {
+            [self.arr_deleteIds addObject:entity.attrId];
+        }
         [self.arr_data removeObjectAtIndex:sender.tag];
         [self.tb_property reloadData];
         [self setAddBtnUI];
@@ -234,7 +238,7 @@
         }
     }
     if (self.selectPropertyComplete) {
-        self.selectPropertyComplete(self.arr_data);
+        self.selectPropertyComplete(self.arr_data,self.arr_deleteIds);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
