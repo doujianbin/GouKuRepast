@@ -14,6 +14,7 @@
 #import "MyHandler.h"
 #import "SettlementViewController.h"
 #import "CommodityViewController.h"
+#import "BindingTakeawayPlatformViewController.h"
 
 @interface StoreOperationViewController (){
     JWBluetoothManage * manage;
@@ -190,13 +191,28 @@
     [btn_jiesuan setTitleEdgeInsets:UIEdgeInsetsMake(btn_jiesuan.imageView.frame.size.height + 6.8 ,-btn_jiesuan.imageView.frame.size.width, 0.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
     [btn_jiesuan setImageEdgeInsets:UIEdgeInsetsMake(-btn_jiesuan.imageView.frame.size.height, 0.0,0.0, -btn_jiesuan.titleLabel.bounds.size.width)];//图片距离右边框
     
-    UIImageView *img_shu = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 4, img_heng_v3.bottom, 0.5, 67)];
-    [self.v_3 addSubview:img_shu];
-    [img_shu setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
     
-    UIImageView *img_shu3 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng_v3.bottom, 0.5, 67)];
-    [self.v_3 addSubview:img_shu3];
-    [img_shu3 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+    UIButton *btn_waimaibangding = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng_v3.bottom + 5, SCREEN_WIDTH / 4, 62)];
+    [self.v_3 addSubview:btn_waimaibangding];
+    [btn_waimaibangding addTarget:self action:@selector(btn_waimaibangdingAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn_waimaibangding setTitle:@"绑定外卖平台" forState:UIControlStateNormal];
+    [btn_waimaibangding setTitleColor:[UIColor colorWithHexString:@"#000000"] forState:UIControlStateNormal];
+    btn_waimaibangding.titleLabel.font = [UIFont systemFontOfSize:12];
+    [btn_waimaibangding setImage:[UIImage imageNamed:@"waimaipingtaibangding"] forState:UIControlStateNormal];
+    [btn_waimaibangding setTitleEdgeInsets:UIEdgeInsetsMake(btn_waimaibangding.imageView.frame.size.height + 6.8 ,-btn_waimaibangding.imageView.frame.size.width, 0.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
+    [btn_waimaibangding setImageEdgeInsets:UIEdgeInsetsMake(-btn_waimaibangding.imageView.frame.size.height, 0.0,0.0, -btn_waimaibangding.titleLabel.bounds.size.width)];//图片距离右边框
+    
+    UIImageView *img_v3_shu = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 4, img_heng_v3.bottom, 0.5, 67)];
+    [self.v_3 addSubview:img_v3_shu];
+    [img_v3_shu setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+    
+    UIImageView *img_v3_shu2 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, img_heng_v3.bottom, 0.5, 67)];
+    [self.v_3 addSubview:img_v3_shu2];
+    [img_v3_shu2 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
+    
+    UIImageView *img_v3_shu3 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 4 * 3, img_heng_v3.bottom, 0.5, 67)];
+    [self.v_3 addSubview:img_v3_shu3];
+    [img_v3_shu3 setBackgroundColor:[UIColor colorWithHexString:@"#E6E6E6"]];
     
 }
 
@@ -257,6 +273,12 @@
 
 - (void)jiesuan{
     SettlementViewController *vc = [[SettlementViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)btn_waimaibangdingAction{
+    BindingTakeawayPlatformViewController *vc = [[BindingTakeawayPlatformViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

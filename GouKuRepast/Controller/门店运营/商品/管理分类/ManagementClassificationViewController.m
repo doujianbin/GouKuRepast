@@ -188,6 +188,9 @@
         
         ShopClassificationEntity *entity = [self.arr_managerCatagory objectAtIndex:section];
         lab_categoryName.text = entity.name;
+        if ([entity.name isEqualToString:@"未分类"]) {
+            [btn_edit setHidden:YES];
+        }
         if (self.selectedSection == section && self.selectedRow == NULLROW) {
             [iv_arrow setHidden:NO];
         }else{
@@ -261,7 +264,6 @@
         ShopClassificationEntity *entity = [self.arr_managerCatagory objectAtIndex:indexPath.section];
         ShopClassificationEntity *entity_small = [entity.childList objectAtIndex:indexPath.row];
         cell.lab_catagoryName.text = entity_small.name;
-        
         cell.btn_edit.tag = indexPath.section * 1000 + indexPath.row;
         [cell.btn_edit addTarget:self action:@selector(smallEntityAction:) forControlEvents:UIControlEventTouchUpInside];
         

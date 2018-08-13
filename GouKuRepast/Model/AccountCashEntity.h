@@ -22,6 +22,7 @@
 @property (nonatomic ,assign)double            mtMoney;               //美团账户余额
 @property (nonatomic ,assign)double            mtMoneyNeedCheck;      //美团待结算金额
 @property (nonatomic ,assign)int               mtToCashNum;           //美团提现次数
+@property (nonatomic ,assign)long              agentId;      //0没有代理商
 
 + (NSArray *)parseStandardListWithJson:(id)json;
 + (AccountCashEntity *)parseStandardEntityWithJson:(id)json;

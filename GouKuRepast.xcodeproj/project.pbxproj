@@ -238,6 +238,15 @@
 		74B41E232108669E008A9A7D /* XYMScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E222108669D008A9A7D /* XYMScanViewController.m */; };
 		74B41E2C2108D017008A9A7D /* XYMScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E2B2108D017008A9A7D /* XYMScanView.m */; };
 		74B41E2E210F0497008A9A7D /* 商家违规条例.md in Resources */ = {isa = PBXBuildFile; fileRef = 74B41E2D210F0496008A9A7D /* 商家违规条例.md */; };
+		74B41E302121218B008A9A7D /* neworderjiedan.wav in Resources */ = {isa = PBXBuildFile; fileRef = 74B41E2F2121218A008A9A7D /* neworderjiedan.wav */; };
+		74B41E332121278E008A9A7D /* ShopOrderAutoTalkingOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E322121278E008A9A7D /* ShopOrderAutoTalkingOrderView.m */; };
+		74B41E3621212A70008A9A7D /* AutoTalkingBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E3521212A70008A9A7D /* AutoTalkingBtn.m */; };
+		74B41E3A21214D61008A9A7D /* BindingTakeawayPlatformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E3921214D61008A9A7D /* BindingTakeawayPlatformViewController.m */; };
+		74B41E3D21214E68008A9A7D /* TakeAwayPlatformEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E3C21214E68008A9A7D /* TakeAwayPlatformEntity.m */; };
+		74B41E40212150DF008A9A7D /* BindingTakeawayPlatformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E3F212150DF008A9A7D /* BindingTakeawayPlatformView.m */; };
+		74B41E4321215664008A9A7D /* BindingPlatformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E4221215664008A9A7D /* BindingPlatformViewController.m */; };
+		74B41E4621215E29008A9A7D /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E4521215E28008A9A7D /* WYWebProgressLayer.m */; };
+		74B41E4921215EC8008A9A7D /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B41E4721215EC7008A9A7D /* NSTimer+addition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -704,6 +713,23 @@
 		74B41E2A2108D016008A9A7D /* XYMScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMScanView.h; sourceTree = "<group>"; };
 		74B41E2B2108D017008A9A7D /* XYMScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMScanView.m; sourceTree = "<group>"; };
 		74B41E2D210F0496008A9A7D /* 商家违规条例.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "商家违规条例.md"; sourceTree = "<group>"; };
+		74B41E2F2121218A008A9A7D /* neworderjiedan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = neworderjiedan.wav; sourceTree = "<group>"; };
+		74B41E312121278E008A9A7D /* ShopOrderAutoTalkingOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopOrderAutoTalkingOrderView.h; sourceTree = "<group>"; };
+		74B41E322121278E008A9A7D /* ShopOrderAutoTalkingOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopOrderAutoTalkingOrderView.m; sourceTree = "<group>"; };
+		74B41E3421212A70008A9A7D /* AutoTalkingBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoTalkingBtn.h; sourceTree = "<group>"; };
+		74B41E3521212A70008A9A7D /* AutoTalkingBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoTalkingBtn.m; sourceTree = "<group>"; };
+		74B41E3821214D61008A9A7D /* BindingTakeawayPlatformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingTakeawayPlatformViewController.h; sourceTree = "<group>"; };
+		74B41E3921214D61008A9A7D /* BindingTakeawayPlatformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingTakeawayPlatformViewController.m; sourceTree = "<group>"; };
+		74B41E3B21214E68008A9A7D /* TakeAwayPlatformEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeAwayPlatformEntity.h; sourceTree = "<group>"; };
+		74B41E3C21214E68008A9A7D /* TakeAwayPlatformEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeAwayPlatformEntity.m; sourceTree = "<group>"; };
+		74B41E3E212150DF008A9A7D /* BindingTakeawayPlatformView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingTakeawayPlatformView.h; sourceTree = "<group>"; };
+		74B41E3F212150DF008A9A7D /* BindingTakeawayPlatformView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingTakeawayPlatformView.m; sourceTree = "<group>"; };
+		74B41E4121215664008A9A7D /* BindingPlatformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingPlatformViewController.h; sourceTree = "<group>"; };
+		74B41E4221215664008A9A7D /* BindingPlatformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingPlatformViewController.m; sourceTree = "<group>"; };
+		74B41E4421215E28008A9A7D /* WYWebProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWebProgressLayer.h; sourceTree = "<group>"; };
+		74B41E4521215E28008A9A7D /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
+		74B41E4721215EC7008A9A7D /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
+		74B41E4821215EC7008A9A7D /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		A6674AB5BC47A4967F9CDA6B /* libPods-GouKuRepast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GouKuRepast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1203,6 +1229,8 @@
 				74B41DEE21045E34008A9A7D /* RepastEntity.m */,
 				74B41E032105D8AD008A9A7D /* SecruityTokenEntity.h */,
 				74B41E042105D8AD008A9A7D /* SecruityTokenEntity.m */,
+				74B41E3B21214E68008A9A7D /* TakeAwayPlatformEntity.h */,
+				74B41E3C21214E68008A9A7D /* TakeAwayPlatformEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1247,8 +1275,8 @@
 		743BB63520F5D1CE00DD5B99 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				743BB63620F5D1CE00DD5B99 /* MyHandler.m */,
 				743BB63720F5D1CE00DD5B99 /* MyHandler.h */,
+				743BB63620F5D1CE00DD5B99 /* MyHandler.m */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -1256,8 +1284,8 @@
 		743BB63820F5D1CE00DD5B99 /* 收银 */ = {
 			isa = PBXGroup;
 			children = (
-				743BB63920F5D1CE00DD5B99 /* CashierHandler.m */,
 				743BB63A20F5D1CE00DD5B99 /* CashierHandler.h */,
+				743BB63920F5D1CE00DD5B99 /* CashierHandler.m */,
 			);
 			path = "收银";
 			sourceTree = "<group>";
@@ -1265,8 +1293,8 @@
 		743BB63B20F5D1CE00DD5B99 /* 活动 */ = {
 			isa = PBXGroup;
 			children = (
-				743BB63C20F5D1CE00DD5B99 /* ActiveHandler.m */,
 				743BB63D20F5D1CE00DD5B99 /* ActiveHandler.h */,
+				743BB63C20F5D1CE00DD5B99 /* ActiveHandler.m */,
 			);
 			path = "活动";
 			sourceTree = "<group>";
@@ -1417,6 +1445,10 @@
 				743BB75220F5DAC800DD5B99 /* SupplierOrderManagerTableViewCell.m */,
 				743BB75620F5DB7700DD5B99 /* CountDownManager.h */,
 				743BB75520F5DB7600DD5B99 /* CountDownManager.m */,
+				74B41E312121278E008A9A7D /* ShopOrderAutoTalkingOrderView.h */,
+				74B41E322121278E008A9A7D /* ShopOrderAutoTalkingOrderView.m */,
+				74B41E3421212A70008A9A7D /* AutoTalkingBtn.h */,
+				74B41E3521212A70008A9A7D /* AutoTalkingBtn.m */,
 			);
 			path = "外卖订单";
 			sourceTree = "<group>";
@@ -1494,6 +1526,7 @@
 				743BB74D20F5D8E800DD5B99 /* StoreOperationViewController.m */,
 				7448046020FF022000D6FB43 /* 商品 */,
 				743BB75E20F6FA7A00DD5B99 /* 结算 */,
+				74B41E3721214D06008A9A7D /* 绑定外卖平台 */,
 			);
 			path = "门店运营";
 			sourceTree = "<group>";
@@ -1556,6 +1589,7 @@
 		743BB79F20F7003400DD5B99 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				74B41E2F2121218A008A9A7D /* neworderjiedan.wav */,
 				743BB7A020F7003400DD5B99 /* ordercancelrequest.wav */,
 				743BB7A120F7003400DD5B99 /* neworder.wav */,
 				743BB7A220F7003400DD5B99 /* cancerPurchaseOrder.wav */,
@@ -1684,6 +1718,23 @@
 				74B41DF621047DE8008A9A7D /* ShopClassificationTableViewCell.m */,
 			);
 			path = "店内分类";
+			sourceTree = "<group>";
+		};
+		74B41E3721214D06008A9A7D /* 绑定外卖平台 */ = {
+			isa = PBXGroup;
+			children = (
+				74B41E3821214D61008A9A7D /* BindingTakeawayPlatformViewController.h */,
+				74B41E3921214D61008A9A7D /* BindingTakeawayPlatformViewController.m */,
+				74B41E4121215664008A9A7D /* BindingPlatformViewController.h */,
+				74B41E4221215664008A9A7D /* BindingPlatformViewController.m */,
+				74B41E3E212150DF008A9A7D /* BindingTakeawayPlatformView.h */,
+				74B41E3F212150DF008A9A7D /* BindingTakeawayPlatformView.m */,
+				74B41E4421215E28008A9A7D /* WYWebProgressLayer.h */,
+				74B41E4521215E28008A9A7D /* WYWebProgressLayer.m */,
+				74B41E4821215EC7008A9A7D /* NSTimer+addition.h */,
+				74B41E4721215EC7008A9A7D /* NSTimer+addition.m */,
+			);
+			path = "绑定外卖平台";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1815,6 +1866,7 @@
 				743BB69320F5D1CE00DD5B99 /* address.txt in Resources */,
 				743BB7A720F7003400DD5B99 /* cancerPurchaseOrder.wav in Resources */,
 				743BB52D20F4C79000DD5B99 /* Main.storyboard in Resources */,
+				74B41E302121218B008A9A7D /* neworderjiedan.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1896,6 +1948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				743BB77F20F6FA8D00DD5B99 /* ShaiXuanView.m in Sources */,
+				74B41E3621212A70008A9A7D /* AutoTalkingBtn.m in Sources */,
 				743BB66820F5D1CE00DD5B99 /* IQKeyboardManager.m in Sources */,
 				74B41DDD20FF372D008A9A7D /* CommodityPropertyTableViewCell.m in Sources */,
 				743BB6AC20F5D1CE00DD5B99 /* ItemsEntity.m in Sources */,
@@ -1953,7 +2006,9 @@
 				743BB6B720F5D1CE00DD5B99 /* CashierHandler.m in Sources */,
 				743BB6A520F5D1CE00DD5B99 /* CommodityCatagoryEntity.m in Sources */,
 				743BB6B620F5D1CE00DD5B99 /* MyHandler.m in Sources */,
+				74B41E4921215EC8008A9A7D /* NSTimer+addition.m in Sources */,
 				74B41E2021086442008A9A7D /* EditCommodityViewController.m in Sources */,
+				74B41E3A21214D61008A9A7D /* BindingTakeawayPlatformViewController.m in Sources */,
 				74B41E022105D791008A9A7D /* RepastCommodityHandler.m in Sources */,
 				743BB6AA20F5D1CE00DD5B99 /* InventoryEntity.m in Sources */,
 				743BB6C020F5D1CE00DD5B99 /* CustomerManagerHandler.m in Sources */,
@@ -1970,6 +2025,7 @@
 				743BB6A120F5D1CE00DD5B99 /* AccountCashEntity.m in Sources */,
 				743BB67220F5D1CE00DD5B99 /* UIResponder+findFirstResponder.m in Sources */,
 				743BB67420F5D1CE00DD5B99 /* UIColor+Util.m in Sources */,
+				74B41E4321215664008A9A7D /* BindingPlatformViewController.m in Sources */,
 				743BB6B920F5D1CE00DD5B99 /* PurchaseHandler.m in Sources */,
 				74B41E0E2106ED81008A9A7D /* MaterialsTableViewCell.m in Sources */,
 				743BB68C20F5D1CE00DD5B99 /* OttoTextField.m in Sources */,
@@ -1997,17 +2053,20 @@
 				743BB73B20F5D86B00DD5B99 /* SearchNetOrderViewController.m in Sources */,
 				7448048920FF070100D6FB43 /* ManagerCatagoryTableViewCell.m in Sources */,
 				74B41E232108669E008A9A7D /* XYMScanViewController.m in Sources */,
+				74B41E332121278E008A9A7D /* ShopOrderAutoTalkingOrderView.m in Sources */,
 				743BB67D20F5D1CE00DD5B99 /* UIView+Extension.m in Sources */,
 				743BB6F120F5D75800DD5B99 /* SelectShopViewController.m in Sources */,
 				74B41DFF2105C8D9008A9A7D /* ManagerMaterialsViewController.m in Sources */,
 				743BB66E20F5D1CE00DD5B99 /* IQUIViewController+Additions.m in Sources */,
 				743BB6B320F5D1CE00DD5B99 /* ActiveTimeEntity.m in Sources */,
+				74B41E4621215E29008A9A7D /* WYWebProgressLayer.m in Sources */,
 				743BB6A820F5D1CE00DD5B99 /* StoreEntity.m in Sources */,
 				743BB6AF20F5D1CE00DD5B99 /* ActiveRulesEntity.m in Sources */,
 				743BB74020F5D86B00DD5B99 /* SetAccountNumViewController.m in Sources */,
 				74B41DCE20FF13F5008A9A7D /* AddCommodityViewController.m in Sources */,
 				74B41E082106306F008A9A7D /* ImageUtil.m in Sources */,
 				74B41DEF21045E34008A9A7D /* RepastEntity.m in Sources */,
+				74B41E40212150DF008A9A7D /* BindingTakeawayPlatformView.m in Sources */,
 				743BB73F20F5D86B00DD5B99 /* ChangeShopViewController.m in Sources */,
 				743BB6AE20F5D1CE00DD5B99 /* SupplierCommodityEndity.m in Sources */,
 				743BB66020F5D1CE00DD5B99 /* DateUtils.m in Sources */,
@@ -2070,6 +2129,7 @@
 				7448048520FF070100D6FB43 /* AddSecondClassificationViewController.m in Sources */,
 				74B41DF221047668008A9A7D /* SelectBrandViewController.m in Sources */,
 				743BB65F20F5D1CE00DD5B99 /* GetUUID.m in Sources */,
+				74B41E3D21214E68008A9A7D /* TakeAwayPlatformEntity.m in Sources */,
 				743BB74620F5D86B00DD5B99 /* SelectPrinterNumView.m in Sources */,
 				74B41DD120FF1A04008A9A7D /* AddCommodityHeaderView.m in Sources */,
 				743BB74820F5D86B00DD5B99 /* ConnectPrinterViewController.m in Sources */,

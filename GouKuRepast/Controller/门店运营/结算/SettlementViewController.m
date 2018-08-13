@@ -49,7 +49,13 @@
         
     } success:^(id obj) {
         self.accountCashEntity = (AccountCashEntity *)obj;
-        
+        if (self.accountCashEntity.agentId == 0) {
+            [self.v_settlementBack.btn_eleme_tixian setHidden:YES];
+            [self.v_settlementBack.btn_meituan_tixian setHidden:YES];
+        }else{
+            [self.v_settlementBack.btn_eleme_tixian setHidden:NO];
+            [self.v_settlementBack.btn_meituan_tixian setHidden:NO];
+        }
         [self.v_settlementBack.lab_gouku_balanceT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.money]];
         [self.v_settlementBack.lab_gouku_jiesuanT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.moneyNeedCheck]];
         [self.v_settlementBack.lab_meituan_balanceT setText:[NSString stringWithFormat:@"%.2f",self.accountCashEntity.mtMoney]];

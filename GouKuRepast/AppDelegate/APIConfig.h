@@ -208,6 +208,11 @@
 #define API_POST_PrinterAuto @"/shop/printer/auto"
 //设置打印联数
 #define API_POST_SetPrintNum @"/shop/set/printer"
+//设置是否自动接单
+#define API_POST_SetTakingOrder @"/shop/set/takingOrder"
+
+//查看是否绑定外卖平台
+#define API_POST_BindingTakeAwayPlatform @"/out/authorize/url"
 
 /*
  采购API

@@ -14,6 +14,7 @@
 @property (nonatomic ,assign)int            hadleOrderCount;
 @property (nonatomic ,assign)int            cleseOrderCount;
 @property (nonatomic ,assign)int            allOrderCount;
+@property (nonatomic ,assign)int            autoTakingOrderCount;
 
 + (NSArray *)parseShopOutOrderCountEntityListWithJson:(id)json;
 + (ShopOutOrderCountEntity *)parseShopOutOrderCountEntityWithJson:(id)json;

@@ -118,7 +118,7 @@
         [cell.lab_status setText:@"完成"];
         [cell.lab_price setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"money"]]];
     }else{
-        [cell.lab_status setText:@"退款"];
+        [cell.lab_status setText:@"取消"];
         [cell.lab_price setText:[NSString stringWithFormat:@"-%@",[dic objectForKey:@"money"]]];
     }
     

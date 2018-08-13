@@ -7,6 +7,7 @@
 //
 
 #import "MyHandler.h"
+#import "TakeAwayPlatformEntity.h"
 
 @implementation MyHandler
 +(void)mineShopListWithAccount:(NSString *)account prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed{
@@ -109,6 +110,51 @@
                                           success:^(NSURLSessionDataTask *task, id responseObject) {
                                               if ([[responseObject objectForKey:@"errCode"] intValue] == 0) {
                                                   success(nil);
+                                              }else{
+                                                  [MBProgressHUD hideHUD];
+                                                  [MBProgressHUD showErrorMessage:[responseObject objectForKey:@"errMessage"]];
+                                              }
+                                          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                              [self handlerErrorWithTask:task error:error complete:failed];
+                                          }];
+}
+
+//设置是否自动接单
++ (void)setTakingOrderWithAutoNum:(int)autoNum Prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed{
+    NSString *str_url = [NSString stringWithFormat:@"%@%@",API_Other,API_POST_SetTakingOrder];
+    NSDictionary *dic = @{
+                          @"auto":[NSNumber numberWithInt:autoNum]
+                          };
+    [[RTHttpClient defaultClient] requestWithPath:str_url
+                                           method:RTHttpRequestPost
+                                       parameters:dic
+                                          prepare:prepare
+                                          success:^(NSURLSessionDataTask *task, id responseObject) {
+                                              if ([[responseObject objectForKey:@"errCode"] intValue] == 0) {
+                                                  success(nil);
+                                              }else{
+                                                  [MBProgressHUD hideHUD];
+                                                  [MBProgressHUD showErrorMessage:[responseObject objectForKey:@"errMessage"]];
+                                              }
+                                          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                              [self handlerErrorWithTask:task error:error complete:failed];
+                                          }];
+}
+
+//查看绑定外卖平台
++ (void)selectBindingTakeAwayPlatformPrepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed{
+    NSString *str_url = [NSString stringWithFormat:@"%@%@",API_Other,API_POST_BindingTakeAwayPlatform];
+    NSDictionary *dic = @{
+                          @"shopId":[LoginStorage GetShopId]
+                          };
+    [[RTHttpClient defaultClient] requestWithPath:str_url
+                                           method:RTHttpRequestPost
+                                       parameters:dic
+                                          prepare:prepare
+                                          success:^(NSURLSessionDataTask *task, id responseObject) {
+                                              if ([[responseObject objectForKey:@"errCode"] intValue] == 0) {
+                                                  TakeAwayPlatformEntity *entity = [TakeAwayPlatformEntity parseTakeAwayPlatformEntityWithJson:[responseObject objectForKey:@"data"]];
+                                                  success(entity);
                                               }else{
                                                   [MBProgressHUD hideHUD];
                                                   [MBProgressHUD showErrorMessage:[responseObject objectForKey:@"errMessage"]];

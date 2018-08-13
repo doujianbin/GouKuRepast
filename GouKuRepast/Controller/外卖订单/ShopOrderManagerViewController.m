@@ -26,6 +26,10 @@
 #import "OrderSelectOnlineOrderSectionFooterView.h"
 #import "JWBluetoothManage.h"
 #import "DateUtils.h"
+#import "MyHandler.h"
+#import "ShopOrderAutoTalkingOrderView.h"
+#import "AutoTalkingBtn.h"
+
 
 @interface ShopOrderManagerViewController ()<UITableViewDelegate,UITableViewDataSource,BaseTableViewDelagate,UITextFieldDelegate>{
     JWBluetoothManage * manage;
@@ -39,8 +43,12 @@
 @property (nonatomic ,assign)int                       newOrderCount;
 @property (nonatomic ,assign)int                       hadleOrderCount;
 @property (nonatomic ,assign)int                       cleseOrderCount;
+@property (nonatomic ,assign)int                       autoTakingOrderCount;
 
 @property (nonatomic ,strong)ShopPriceDetailView       *shopPriceDetailView;
+
+@property (nonatomic ,strong)ShopOrderAutoTalkingOrderView     *v_autoTalking;
+@property (nonatomic ,strong)AutoTalkingBtn            *btn_autoTalking;
 
 
 @end
@@ -55,19 +63,76 @@
     [kCountDownManager start];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RefreshShopOrderData:) name:@"RefreshShopNewOrderData" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RefreshShopCancelOrderData:) name:@"RefreshShopCancelOrderData" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RefreshAutoTakingOrderData:) name:@"RefreshAutoTakingOrderData" object:nil];
+    
     manage = [JWBluetoothManage sharedInstance];
 }
 
 - (void)onCreate{
+    
+    //版本升级
+    
+    [MyHandler getAppVersionPrepare:^{
+        
+    } success:^(id obj) {
+        NSDictionary *dic = (NSDictionary *)obj;
+        if (![dic isKindOfClass:[NSNull class]]) {
+            NSString *str_version = [NSString stringWithFormat:@"%@",[dic objectForKey:@"version"]];
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            if ([str_version intValue] > [version intValue]) {
+                if ([[dic objectForKey:@"forced"] boolValue] == NO) {
+                    //更新
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"检查更新" message:[dic objectForKey:@"hint"] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    UIAlertAction *again = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[dic objectForKey:@"downloadUrl"]]];
+                    }];
+                    [cancel setValue:[UIColor colorWithHexString:@"#4A4A4A"] forKey:@"_titleTextColor"];
+                    [alert addAction:cancel];
+                    [alert addAction:again];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }else{
+                    //强制更新
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"检查更新" message:[dic objectForKey:@"hint"] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *again = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[dic objectForKey:@"downloadUrl"]]];
+                        
+                    }];
+                    [again setValue:[UIColor colorWithHexString:@"#4167B2"] forKey:@"_titleTextColor"];
+                    [alert addAction:again];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+            }
+        }
+    } failed:^(NSInteger statusCode, id json) {
+        
+    }];
+    
     self.v_top = [[ShopOrderManagerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SafeAreaStatusBarHeight + 72)];
     [self.view addSubview:self.v_top];
-    WS(weakSelf);
-    self.v_top.selectType = ^(NSInteger index) {
-        weakSelf.selectIndex = (int)index + 1;
-        [weakSelf.tb_orderManager requestDataSource];
-//        NSLog(@"%d     %d",(int)index,weakSelf.selectIndex);
-    };
-    self.tb_orderManager = [[BaseTableView alloc]initWithFrame:CGRectMake(0,self.v_top.bottom, SCREEN_WIDTH,SCREEN_HEIGHT - self.v_top.bottom - SafeAreaBottomHeight - 49) style:UITableViewStyleGrouped hasHeaderRefreshing:YES hasFooterRefreshing:NO];
+    
+    self.v_autoTalking = [[ShopOrderAutoTalkingOrderView alloc]initWithFrame:CGRectMake(0, self.v_top.bottom, SCREEN_WIDTH, 50)];
+    [self.view addSubview:self.v_autoTalking];
+    [self.v_autoTalking.switch_autoTalking addTarget:self action:@selector(v_autoTalkingAction:) forControlEvents:UIControlEventValueChanged];
+    
+    self.btn_autoTalking = [[AutoTalkingBtn alloc]initWithFrame:CGRectMake(0, self.v_autoTalking.bottom, SCREEN_WIDTH, 100)];
+    [self.view addSubview:self.btn_autoTalking];
+    [self.btn_autoTalking addTarget:self action:@selector(btn_autoTalkingAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([LoginStorage AutoTakingStatus] == YES) {
+        [self.tb_orderManager setHidden:YES];
+        [self.btn_autoTalking setHidden:NO];
+        [self.v_autoTalking.switch_autoTalking setOn:YES animated:true];
+    }else{
+        [self.tb_orderManager setHidden:NO];
+        [self.btn_autoTalking setHidden:YES];
+        [self.v_autoTalking.switch_autoTalking setOn:NO animated:true];
+    }
+    
+    self.tb_orderManager = [[BaseTableView alloc]initWithFrame:CGRectMake(0,self.v_autoTalking.bottom, SCREEN_WIDTH,SCREEN_HEIGHT - self.v_autoTalking.bottom - SafeAreaBottomHeight - 49) style:UITableViewStyleGrouped hasHeaderRefreshing:YES hasFooterRefreshing:NO];
     self.tb_orderManager.delegate = self;
     self.tb_orderManager.dataSource = self;
     self.tb_orderManager.tableViewDelegate = self;
@@ -86,7 +151,75 @@
         make.height.mas_equalTo(SCREEN_HEIGHT);
     }];
     
+    WS(weakSelf);
+    self.v_top.selectType = ^(NSInteger index) {
+        if (index == 0) {
+            if ([LoginStorage AutoTakingStatus] == YES) {
+                [weakSelf.tb_orderManager setHidden:YES];
+                [weakSelf.btn_autoTalking setHidden:NO];
+                weakSelf.v_autoTalking.switch_autoTalking.on = YES;
+            }else{
+                [weakSelf.tb_orderManager setHidden:NO];
+                [weakSelf.btn_autoTalking setHidden:YES];
+                weakSelf.v_autoTalking.switch_autoTalking.on = NO;
+                weakSelf.selectIndex = (int)index + 1;
+                [weakSelf.tb_orderManager requestDataSource];
+            }
+            [weakSelf.tb_orderManager setFrame:CGRectMake(0,weakSelf.v_autoTalking.bottom, SCREEN_WIDTH,SCREEN_HEIGHT - weakSelf.v_autoTalking.bottom - SafeAreaBottomHeight - 49)];
+        }
+        else{
+            [weakSelf.tb_orderManager setHidden:NO];
+            [weakSelf.btn_autoTalking setHidden:YES];
+            [weakSelf.tb_orderManager setFrame:CGRectMake(0,weakSelf.v_top.bottom, SCREEN_WIDTH,SCREEN_HEIGHT - weakSelf.v_top.bottom - SafeAreaBottomHeight - 49)];
+            weakSelf.selectIndex = (int)index + 1;
+            [weakSelf.tb_orderManager requestDataSource];
+        }
+    };
+    
     [self.v_top setItemWithIndex:0];
+}
+
+- (void)v_autoTalkingAction:(id)sender{
+    if (self.v_autoTalking.switch_autoTalking.on == YES) {
+        NSLog(@"switch is on");
+        if (self.arr_data.count > 0) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"当前有未接订单，请处理后再次开启自动接单功能" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *again = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.v_autoTalking.switch_autoTalking.on = NO;
+            }];
+            [alert addAction:again];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            [MyHandler setTakingOrderWithAutoNum:1 Prepare:^{
+                [MBProgressHUD showActivityMessageInView:nil];
+            } success:^(id obj) {
+                [MBProgressHUD hideHUD];
+                [self.tb_orderManager setHidden:YES];
+                [self.btn_autoTalking setHidden:NO];
+                [LoginStorage saveAutoTakingStatus:YES];
+                
+            } failed:^(NSInteger statusCode, id json) {
+                [MBProgressHUD hideHUD];
+            }];
+        }
+    } else {
+        NSLog(@"switch is off");
+        [MyHandler setTakingOrderWithAutoNum:0 Prepare:^{
+            [MBProgressHUD showActivityMessageInView:nil];
+        } success:^(id obj) {
+            [MBProgressHUD hideHUD];
+            [self.tb_orderManager setHidden:NO];
+            [self.btn_autoTalking setHidden:YES];
+            [LoginStorage saveAutoTakingStatus:NO];
+            self.selectIndex = 1;
+            [self.tb_orderManager requestDataSource];
+            
+        } failed:^(NSInteger statusCode,
+                   id json) {
+            [MBProgressHUD hideHUD];
+        }];
+    }
 }
 
 - (void)tableView:(BaseTableView *)tableView requestDataSourceWithPageNum:(NSInteger)pageNum complete:(DataCompleteBlock)complete{
@@ -408,6 +541,10 @@
     [self getOutOrderCount];
     [self.v_top setItemWithIndex:2];
 }
+- (void)RefreshAutoTakingOrderData:(NSNotification *)notification{
+    [self getOutOrderCount];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -541,6 +678,8 @@
         self.newOrderCount = entity.newOrderCount;
         self.hadleOrderCount = entity.hadleOrderCount;
         self.cleseOrderCount = entity.cleseOrderCount;
+        self.autoTakingOrderCount = entity.autoTakingOrderCount;
+        [self.btn_autoTalking.lb_1 setText:[NSString stringWithFormat:@"%d张订单已自动接单",self.autoTakingOrderCount]];
         [self setNumData];
         if (entity.allOrderCount > 0) {
             [(TabBarViewController *)self.tabBarController showBadgeOnItemIndex:0 withCount:entity.allOrderCount];
@@ -660,6 +799,13 @@
             }
         }];
     }
+}
+
+- (void)btn_autoTalkingAction{
+    [self.tb_orderManager setFrame:CGRectMake(0,self.v_top.bottom, SCREEN_WIDTH,SCREEN_HEIGHT - self.v_top.bottom - SafeAreaBottomHeight - 49)];
+    self.selectIndex = 2;
+    [self.tb_orderManager requestDataSource];
+    [self.v_top setItemWithIndex:1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

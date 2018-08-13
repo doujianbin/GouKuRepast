@@ -23,6 +23,8 @@ static NSString * const AccessKeySecret = @"accessKeySecret";
 static NSString * const AccessKeyId = @"accessKeyId";
 static NSString * const ISPrinter = @"isPrinter";
 static NSString * const PrinterNum = @"PrinterNum";
+static NSString * const AutoTakingOrder = @"autoTakingOrder";
+
 
 @implementation LoginStorage
 
@@ -184,6 +186,16 @@ static NSString * const PrinterNum = @"PrinterNum";
 }
 + (NSString *)getPrinterNum{
     return  [UserDefaultsUtils valueWithKey:PrinterNum];
+}
+/**
+ *  自动接单
+ */
++ (void)saveAutoTakingStatus:(BOOL)autoTakingStatus{
+    [UserDefaultsUtils saveBoolValue:autoTakingStatus withKey:AutoTakingOrder];
+}
+
++ (BOOL)AutoTakingStatus{
+    return  [UserDefaultsUtils boolValueWithKey:AutoTakingOrder];
 }
 
 @end

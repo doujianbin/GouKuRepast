@@ -239,6 +239,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //用户申请取消订单  来自饿了么  发送通知给订单处理界面刷新数据
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshShopCancelOrderData" object:nil userInfo:userInfo];
     }
+    if ([[dic objectForKey:@"type"] intValue] == 4 && [[dic objectForKey:@"operation"] intValue]== 2) {
+        //新的自动接单的推送
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshAutoTakingOrderData" object:nil userInfo:userInfo];
+    }
     
 }
 #endif

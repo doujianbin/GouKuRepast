@@ -85,7 +85,9 @@
             [LoginStorage savePhoneNum:[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"phone"]];
             [LoginStorage saveShopPic:[NSString stringWithFormat:@"%@%@",HeadQZ,[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"logo"]]];
             [LoginStorage saveType:[NSString stringWithFormat:@"%@",[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"type"]]];
-            
+            [LoginStorage savePrinterNum:[NSString stringWithFormat:@"%@",[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"printerNum"]]];
+            [LoginStorage saveIsPrinter:[[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"autoPrint"] boolValue]];
+            [LoginStorage saveAutoTakingStatus:[[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"autoTakingOrder"] boolValue]];
             TabBarViewController *vc = [[TabBarViewController alloc]init];
             [UIApplication sharedApplication].keyWindow.rootViewController = vc;
 //            if (self.changeName) {

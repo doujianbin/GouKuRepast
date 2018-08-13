@@ -66,7 +66,8 @@
             [LoginStorage saveIsLogin:YES];
             [LoginStorage saveType:[NSString stringWithFormat:@"%@",[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"type"]]];
             [LoginStorage savePrinterNum:[NSString stringWithFormat:@"%@",[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"printerNum"]]];
-            [LoginStorage saveIsPrinter:[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"autoPrint"]];
+            [LoginStorage saveIsPrinter:[[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"autoPrint"] boolValue]];
+            [LoginStorage saveAutoTakingStatus:[[[self.arr_shop objectAtIndex:indexPath.row] objectForKey:@"autoTakingOrder"] boolValue]];
             
             TabBarViewController *vc = [[TabBarViewController alloc]init];
             [UIApplication sharedApplication].keyWindow.rootViewController = vc;

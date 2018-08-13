@@ -22,4 +22,10 @@
 
 //设置打印联数
 + (void)setPrintNumWithPrinterNum:(int)printerNum Prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
+
+//设置是否自动接单
++ (void)setTakingOrderWithAutoNum:(int)autoNum Prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
+
+//查看绑定外卖平台
++ (void)selectBindingTakeAwayPlatformPrepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
 @end

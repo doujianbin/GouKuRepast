@@ -58,4 +58,8 @@
 
 + (void)savePrinterNum:(NSString *)printerNum;
 + (NSString *)getPrinterNum;
+
++ (void)saveAutoTakingStatus:(BOOL)autoTakingStatus;
++ (BOOL)AutoTakingStatus;
+
 @end
