@@ -276,7 +276,7 @@
                                           }];
 }
 
-//获取订单详情
+//接单
 + (void)shopGetOutOrderDetailWithOrderId:(NSNumber *)orderId prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed{
     NSString *str_url = [NSString stringWithFormat:@"%@%@%@",API_OrderAndPay,API_GET_ShopGetOutOrderDetail,orderId];
     [[RTHttpClient defaultClient] requestWithPath:str_url
@@ -286,6 +286,32 @@
                                           success:^(NSURLSessionDataTask *task, id responseObject) {
                                               if ([[responseObject objectForKey:@"errCode"] intValue] == 0) {
                                                   PurchaseOrderEntity *entity = [PurchaseOrderEntity parsePurchaseOrderEntityWithJson:[responseObject objectForKey:@"data"]];
+                                                  success(entity);
+                                              }else{
+                                                  [MBProgressHUD hideHUD];
+                                                  [MBProgressHUD showErrorMessage:[responseObject objectForKey:@"errMessage"]];
+                                              }
+                                          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                              [self handlerErrorWithTask:task error:error complete:failed];
+                                          }];
+}
+
+//根据orderid获取订单详情
++ (void)selectOutOrderDetailWithOrderId:(NSNumber *)orderId prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed{
+    NSString *str_url = [NSString stringWithFormat:@"%@%@",API_OrderAndPay,API_POST_OutOrderListSearch];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    if (orderId) {
+        [dic setObject:orderId forKey:@"keyWord"];
+    }
+    [[RTHttpClient defaultClient] requestWithPath:str_url
+                                           method:RTHttpRequestPost
+                                       parameters:dic
+                                          prepare:prepare
+                                          success:^(NSURLSessionDataTask *task, id responseObject) {
+                                              if ([[responseObject objectForKey:@"errCode"] intValue] == 0) {
+                                                  NSDictionary * orderDetail = [[[[responseObject objectForKey:@"data"] objectAtIndex:0] objectForKey:@"orders"] objectAtIndex:0];
+                                                  PurchaseOrderEntity *entity = [PurchaseOrderEntity parsePurchaseOrderEntityWithJson:orderDetail];
                                                   success(entity);
                                               }else{
                                                   [MBProgressHUD hideHUD];

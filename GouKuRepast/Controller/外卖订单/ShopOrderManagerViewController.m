@@ -30,7 +30,6 @@
 #import "ShopOrderAutoTalkingOrderView.h"
 #import "AutoTalkingBtn.h"
 
-
 @interface ShopOrderManagerViewController ()<UITableViewDelegate,UITableViewDataSource,BaseTableViewDelagate,UITextFieldDelegate>{
     JWBluetoothManage * manage;
 }
@@ -198,6 +197,7 @@
                 [self.tb_orderManager setHidden:YES];
                 [self.btn_autoTalking setHidden:NO];
                 [LoginStorage saveAutoTakingStatus:YES];
+                [LoginStorage saveIsPrinter:YES];
                 
             } failed:^(NSInteger statusCode, id json) {
                 [MBProgressHUD hideHUD];
@@ -407,9 +407,7 @@
                     
                 } success:^(id obj) {
                     PurchaseOrderEntity *entity = (PurchaseOrderEntity *)obj;
-                    if ([LoginStorage IsPrinter] == YES) {
-                        [self autoPrintWithPurchaseOrderEntity:entity];
-                    }
+                    [self autoPrintWithPurchaseOrderEntity:entity];
                 } failed:^(NSInteger statusCode, id json) {
                     [MBProgressHUD showErrorMessage:@"加载订单信息异常"];
                 }];
@@ -433,9 +431,7 @@
                     
                 } success:^(id obj) {
                     PurchaseOrderEntity *entity = (PurchaseOrderEntity *)obj;
-                    if ([LoginStorage IsPrinter] == YES) {
-                        [self autoPrintWithPurchaseOrderEntity:entity];
-                    }
+                    [self autoPrintWithPurchaseOrderEntity:entity];
                 } failed:^(NSInteger statusCode, id json) {
                     [MBProgressHUD showErrorMessage:@"加载订单信息异常"];
                 }];
@@ -462,9 +458,7 @@
                         
                     } success:^(id obj) {
                         PurchaseOrderEntity *entity = (PurchaseOrderEntity *)obj;
-                        if ([LoginStorage IsPrinter] == YES) {
-                            [self autoPrintWithPurchaseOrderEntity:entity];
-                        }
+                        [self autoPrintWithPurchaseOrderEntity:entity];
                     } failed:^(NSInteger statusCode, id json) {
                         [MBProgressHUD showErrorMessage:@"加载订单信息异常"];
                     }];
@@ -536,13 +530,26 @@
     [self.v_top setItemWithIndex:0];
     
 }
-
 - (void)RefreshShopCancelOrderData:(NSNotification *)notification{
     [self getOutOrderCount];
     [self.v_top setItemWithIndex:2];
 }
 - (void)RefreshAutoTakingOrderData:(NSNotification *)notification{
     [self getOutOrderCount];
+    NSDictionary * userInfo = [notification userInfo];
+    
+    NSString *content = [userInfo valueForKey:@"content"];
+    
+    NSDictionary *dic =  [self dictionaryWithJsonString:content];
+    
+    [SupplierOrderHandler selectOutOrderDetailWithOrderId:[dic objectForKey:@"orderId"] prepare:^{
+        
+    } success:^(id obj) {
+        PurchaseOrderEntity *entity = (PurchaseOrderEntity *)obj;
+        [self autoPrintWithPurchaseOrderEntity:entity];
+    } failed:^(NSInteger statusCode, id json) {
+        [MBProgressHUD showErrorMessage:@"加载订单信息异常"];
+    }];
 }
 
 
@@ -679,7 +686,11 @@
         self.hadleOrderCount = entity.hadleOrderCount;
         self.cleseOrderCount = entity.cleseOrderCount;
         self.autoTakingOrderCount = entity.autoTakingOrderCount;
-        [self.btn_autoTalking.lb_1 setText:[NSString stringWithFormat:@"%d张订单已自动接单",self.autoTakingOrderCount]];
+        if (self.autoTakingOrderCount > 0) {
+            [self.btn_autoTalking.lb_1 setText:[NSString stringWithFormat:@"%d张订单已自动接单",self.autoTakingOrderCount]];
+        }else{
+            [self.btn_autoTalking.lb_1 setText:@"订单已自动接单"];
+        }
         [self setNumData];
         if (entity.allOrderCount > 0) {
             [(TabBarViewController *)self.tabBarController showBadgeOnItemIndex:0 withCount:entity.allOrderCount];

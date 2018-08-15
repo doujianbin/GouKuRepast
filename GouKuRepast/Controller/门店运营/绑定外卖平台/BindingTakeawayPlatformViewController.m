@@ -65,7 +65,7 @@
 
 - (void)btn_elemeAction{
     BindingPlatformViewController *vc = [[BindingPlatformViewController alloc]init];
-    vc.str_title = @"饿了么";
+    vc.str_title = @"绑定饿了么";
     vc.str_Url = self.entity.elemeUrl;
     [self.navigationController pushViewController:vc animated:YES];
     vc.bindingPlatformComplete = ^{
@@ -75,13 +75,14 @@
 
 - (void)btn_meituanAction{
     BindingPlatformViewController *vc = [[BindingPlatformViewController alloc]init];
-    vc.str_title = @"美团";
     if (self.entity.meituanShopName.length > 0) {
         //说明已绑定  点进去解绑
         vc.str_Url = self.entity.meituanUnbindUrl;
+        vc.str_title = @"解绑美团";
     }else{
         //说明未绑定  点进绑定
         vc.str_Url = self.entity.meituanUrl;
+        vc.str_title = @"绑定美团";
     }
     [self.navigationController pushViewController:vc animated:YES];
     vc.bindingPlatformComplete = ^{

@@ -15,7 +15,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Bugtags/Bugtags.h>
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate>{
+    AVAudioPlayer* audioPlayer;
+}
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgrounTask;
 @property (nonatomic, strong) NSTimer *timer;
@@ -225,22 +227,51 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     if ([[dic objectForKey:@"type"] intValue] == 2 && [[dic objectForKey:@"status"] intValue]== 0) {
         //采购订单   用户支付成功已下单  发送通知给订单处理界面刷新数据
+        
+        NSString *path = [[NSBundle mainBundle]
+                          pathForResource:@"PurchaseOrderPayComplete" ofType:@"wav"];
+        audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:
+                       [NSURL fileURLWithPath:path] error:NULL];
+        [audioPlayer play];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSupplierOrderData" object:nil userInfo:nil];
     }
     if ([[dic objectForKey:@"type"] intValue] == 4 && [[dic objectForKey:@"operation"] intValue]== 1) {
         //商家新订单  来自饿了么  发送通知给订单处理界面刷新数据
+        NSString *path = [[NSBundle mainBundle]
+                          pathForResource:@"neworder" ofType:@"wav"];
+        audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:
+                       [NSURL fileURLWithPath:path] error:NULL];
+        [audioPlayer play];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshShopNewOrderData" object:nil userInfo:userInfo];
     }
     if ([[dic objectForKey:@"type"] intValue] == 4 && [[dic objectForKey:@"operation"] intValue]== 8) {
-        //用户已取消订单  来自饿了么  发送通知给订单处理界面刷新数据
+        //用户已取消订单  来自饿了么/饿了么  发送通知给订单处理界面刷新数据
+        NSString *path = [[NSBundle mainBundle]
+                          pathForResource:@"ordercancel(1min)" ofType:@"wav"];
+        audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:
+                       [NSURL fileURLWithPath:path] error:NULL];
+        [audioPlayer play];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshShopCancelOrderData" object:nil userInfo:userInfo];
     }
     if ([[dic objectForKey:@"type"] intValue] == 4 && [[dic objectForKey:@"operation"] intValue]== 9) {
         //用户申请取消订单  来自饿了么  发送通知给订单处理界面刷新数据
+        NSString *path = [[NSBundle mainBundle]
+                          pathForResource:@"ordercancelrequest" ofType:@"wav"];
+        audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:
+                       [NSURL fileURLWithPath:path] error:NULL];
+        [audioPlayer play];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshShopCancelOrderData" object:nil userInfo:userInfo];
+        
     }
     if ([[dic objectForKey:@"type"] intValue] == 4 && [[dic objectForKey:@"operation"] intValue]== 2) {
         //新的自动接单的推送
+        NSString *path = [[NSBundle mainBundle]
+                          pathForResource:@"neworderjiedan" ofType:@"wav"];
+        audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:
+                       [NSURL fileURLWithPath:path] error:NULL];
+        [audioPlayer play];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshAutoTakingOrderData" object:nil userInfo:userInfo];
     }
     

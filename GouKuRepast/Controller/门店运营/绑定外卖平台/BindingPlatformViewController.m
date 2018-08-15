@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"绑定%@",self.str_title];
+    self.title = self.str_title;
 }
 
 - (void)onCreate{

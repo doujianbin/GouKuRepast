@@ -48,8 +48,11 @@
 //查询待处理订单数量
 + (void)selectOutOrderCountPrepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
 
-//获取订单详情
+//接单详情
 + (void)shopGetOutOrderDetailWithOrderId:(NSNumber *)orderId prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
+
+//根据orderid获取订单详情
++ (void)selectOutOrderDetailWithOrderId:(NSNumber *)orderId prepare:(PrepareBlock)prepare success:(SuccessBlock)success failed:(FailedBlock)failed;
 
 
 @end
