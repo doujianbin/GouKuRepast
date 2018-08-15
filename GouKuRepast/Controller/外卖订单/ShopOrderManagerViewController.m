@@ -843,6 +843,13 @@
     return dic;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshShopNewOrderData" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshShopCancelOrderData" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshAutoTakingOrderData" object:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -542,6 +542,11 @@
     self.tf_guigeName.text = standardsEntity.name;
     self.tf_guigeDescrib.text = standardsEntity.desc;
     [self.iv_guigePic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,standardsEntity.pictures]] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    if ([standardsEntity.pictures rangeOfString:@"http"].location != NSNotFound) {
+        [self.iv_guigePic sd_setImageWithURL:[NSURL URLWithString:standardsEntity.pictures] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    }else{
+        [self.iv_guigePic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,standardsEntity.pictures]] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    }
     if ([standardsEntity.weight doubleValue] > 0) {
         self.tf_guigeWeight.text = [NSString stringWithFormat:@"%@",standardsEntity.weight];
     }

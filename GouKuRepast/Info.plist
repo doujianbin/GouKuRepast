@@ -2,16 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Peripheral Usage Description</string>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>此App会在修改头像或收集信息时使用相册中的照片</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>此App会在修改头像或收集信息时使用相册中的照片</string>
-	<key>NSCameraUsageDescription</key>
-	<string>此app会在扫描二维码征集头像时使用相机</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -29,9 +21,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Peripheral Usage Description</string>
+	<key>NSCameraUsageDescription</key>
+	<string>此app会在扫描二维码征集头像时使用相机</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>此App会在修改头像或收集信息时使用相册中的照片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>此App会在修改头像或收集信息时使用相册中的照片</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

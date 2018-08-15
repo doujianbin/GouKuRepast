@@ -265,7 +265,13 @@
     self.tf_commodityBrand.text = repastEntity.brandName;
     self.tf_commodityDsecrib.text = repastEntity.desc;
     self.tf_commodityClassification.text = repastEntity.categoryName;
-    [self.iv_commodityPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,repastEntity.pictures]] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    
+    if ([repastEntity.pictures rangeOfString:@"http"].location != NSNotFound) {
+        [self.iv_commodityPic sd_setImageWithURL:[NSURL URLWithString:repastEntity.pictures] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    }else{
+        [self.iv_commodityPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,repastEntity.pictures]] placeholderImage:[UIImage imageNamed:@"add_pic"]];
+    }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

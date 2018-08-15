@@ -63,7 +63,7 @@
 
 - (void)contentCellWithAccountCashDetailEntity:(AccountCashDetailEntity *)accountCashDetailEntity{
    
-    if (accountCashDetailEntity.accountType == 2 || accountCashDetailEntity.accountType == 2001 || accountCashDetailEntity.accountType == 2002) {
+    if (accountCashDetailEntity.accountType == 2 || accountCashDetailEntity.accountType == 2001 || accountCashDetailEntity.accountType == 2002 || accountCashDetailEntity.accountType == 3002 || accountCashDetailEntity.accountType == 3001) {
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [self.lab_price mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(150);

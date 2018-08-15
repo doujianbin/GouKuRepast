@@ -207,12 +207,12 @@
         vc.crashId = [NSString stringWithFormat:@"%@",entity.cashOrderId];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (entity.accountType == 2001) {
+    if (entity.accountType == 2001 || entity.accountType == 3001) {
         EleMeBillDetailViewController *vc = [[EleMeBillDetailViewController alloc]init];
         vc.accountentity = entity;
         [self.navigationController pushViewController:vc animated:YES];
     }
-
+    
 }
 
 - (void)rightBarAction{

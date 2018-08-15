@@ -126,7 +126,11 @@
 
 - (void)contentCellWithCommodityInformationEntity:(RepastEntity *)commodityInformationEntity{
     [self.lab_CommoditySalesVolume setHidden:YES];
-    [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,commodityInformationEntity.pictures]] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    if ([commodityInformationEntity.pictures rangeOfString:@"http"].location != NSNotFound) {
+        [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:commodityInformationEntity.pictures] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    }else{
+        [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,commodityInformationEntity.pictures]] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    }
     self.lab_CommodityName.text = commodityInformationEntity.name;
 
     if (commodityInformationEntity.storeUsing == YES && commodityInformationEntity.onlineStoreUsing == YES) {
@@ -170,7 +174,11 @@
 //门店布局
 - (void)contentCellInShopWithCommodityInformationEntity:(CommodityFromCodeEntity *)commodityInformationEntity{
     [self.lab_CommoditySalesVolume setHidden:YES];
-    [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,commodityInformationEntity.pictures]] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    if ([commodityInformationEntity.pictures rangeOfString:@"http"].location != NSNotFound) {
+        [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:commodityInformationEntity.pictures] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    }else{
+        [self.img_CommodityHeadPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HeadQZ,commodityInformationEntity.pictures]] placeholderImage:[UIImage imageNamed:@"headPic"]];
+    }
     self.lab_CommodityName.text = commodityInformationEntity.name;
     self.lab_CommodityStock.text = [NSString stringWithFormat:@"库存%@",commodityInformationEntity.stock];
     self.lab_CommoditySalesVolume.text = [NSString stringWithFormat:@"月售%@",commodityInformationEntity.saleAmountMonth];
